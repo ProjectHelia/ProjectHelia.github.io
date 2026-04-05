@@ -1,21 +1,14 @@
 # Project HELIA Website
+The official Project HELIA Website!
+You can find it deployed to [projecthelia.org](projecthelia.org).
 
-## Sitemap
-```
-- About (Main Oview): Hero, summary information, lots of CAD/diagrams, less information dense, eye-catching page, learn more buttons for each section
-  Sections: The experiment, The structure, Iris, Fluidics, Electionics (Power, Instumentation, Photonics, CAN Bus), Software (On Board Data Handler, Telemetry, Ground control)
+## Contributing
+The website uses vanilla HTML/CSS/JS for simplicity. It's a single page landing page with project details and links to socials & github, so a framework isn't necessary. I'd like to keep it as simple as possible too.
 
-- The Science
-  - The Payload (What? Why?): HUVECs
-  - The Experiment (What? Why?): The flasks, the number, the layout
+If you're interested in helping, check the issues tab for tickets you can work on.
+Fork the project (or create a branch for yourself based off main) to work on the project and pull request into the main (production) branch. Please don't work on the production branch in case you break stuff and it gets deployed.
 
-- The Tech
-  - Structure: CAD, the window, the insulation, the assembly breakdown
-  - Fluidics: Actuators, tubes, injection, RNAlater, etc
-  - Iris: iris shutter, why its there and what it does
-  - Instrumentation: housekeeping sensors, what and why
-  - Power:
-  - Photonics: 
-  - On Board Computer: CAN Bus, ESP32s
-  - Ground Control: software focused
-```
+To set up the development environment, I'd recommend using VScode with the "Live Server" extension.
+Then right clicking the `index.html` file and selecting "Live Server" will open the browser and hot reload your changes.
+This means you don't need to refresh every time you make a save (crtl+s) you'll be able to see your changes happening instantly :D
+If you do this I would recommend enabling auto save (File->Auto Save) for instant refreshes whenever you make changes (no need to save manually)!
