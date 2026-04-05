@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project HELIA — BEXUS 39</title>
+  <meta name="description" content="Project HELIA is a University of Nottingham student experiment flying on BEXUS 39. A pressurised stratospheric skylab studying UV radiation effects on human cells.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#">
+      <div class="nav-patch">
+        <img src="assets/helia-patch.png" alt="Project HELIA mission patch" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="patch-placeholder">H</div>
+      </div>
+      <span class="nav-name">PROJECT HELIA</span>
+    </a>
+    <div class="nav-right">
+      <a href="#the-mission" class="nav-link">The Mission</a>
+      <a href="#the-science" class="nav-link">The Science</a>
+      <a href="#the-tech" class="nav-link">The Tech</a>
+      <a href="#sponsor" class="nav-sponsor">Sponsor Us</a>
+      <div class="nav-countdown">
+        <span class="countdown-prefix">T&#8209;</span>
+        <span id="countdown-display">…</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-tag">BEXUS 39 &nbsp;·&nbsp; ESRANGE SPACE CENTER, SWEDEN</p>
+      <h1 class="hero-title">A STRATOSPHERIC<br>SKYLAB</h1>
+      <p class="hero-sub">Project HELIA is a University of Nottingham student experiment sending human cells to the stratosphere — isolating UV radiation as the sole variable in stratospheric cell biology for the first time.</p>
+      <div class="hero-ctas">
+        <a href="#the-mission" class="btn-primary">Read the Mission</a>
+        <a href="#sponsor" class="btn-outline">Sponsor Us</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ STATS ═══ -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-value"><span class="stat-num" data-target="25">0</span><span class="stat-unit">km</span></div>
+        <p class="stat-label">Float Altitude</p>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-value"><span class="stat-num" data-target="17">0</span></div>
+        <p class="stat-label">Team Members</p>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-value"><span class="stat-num" data-target="4">0</span></div>
+        <p class="stat-label">Human Cell Samples</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ THE MISSION ═══ -->
+  <section id="the-mission">
+    <div class="section-header reveal">
+      <span class="section-tag">01 — THE MISSION</span>
+      <h2 class="section-title">Why HELIA?</h2>
+    </div>
+
+    <div class="tabs-wrapper">
+      <div class="tabs-nav" role="tablist" aria-label="Mission tabs">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="problem">The Problem</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="solution">Our Solution</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="flight">The Flight</button>
+      </div>
+
+      <div class="tab-panels">
+
+        <!-- Tab 1: The Problem -->
+        <div class="tab-panel active" id="tab-problem" role="tabpanel">
+          <div class="tab-layout">
+            <div class="tab-text">
+              <h3>Confounded by the environment</h3>
+              <p>The stratosphere at ~25 km is a compelling analogue for spaceflight radiation: UV flux is intense, atmospheric shielding is thin, and the conditions are largely uncharacterised for biological effects.</p>
+              <p>But every previous balloon biology experiment has exposed cells to <em>multiple</em> stressors at once — low pressure, sub-zero temperatures, and desiccation alongside the radiation. It's impossible to isolate what's causing the damage.</p>
+              <p>There is no standardised, low-cost platform capable of sustaining sensitive human cells in the stratosphere while controlling every variable except radiation. Until now.</p>
+            </div>
+            <div class="tab-visual">
+              <div class="img-placeholder">
+                <span class="placeholder-label">RENDER</span>
+                <span class="placeholder-desc">Existing exposure tray vs HELIA pressurised incubator — side by side</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Our Solution -->
+        <div class="tab-panel" id="tab-solution" role="tabpanel">
+          <div class="tab-layout">
+            <div class="tab-text">
+              <h3>One variable. Perfect control.</h3>
+              <p>HELIA (High-altitude Exposure Laboratory for Incubation and Analysis) is a pressurised cylindrical skylab incubator. Inside, we maintain <strong>1 atm pressure</strong>, <strong>35 ± 5°C</strong> temperature, and controlled CO₂ and humidity — eliminating every environmental confound.</p>
+              <p>Four Human Umbilical Vein Endothelial Cell (HUVEC) monolayers are exposed through a UV fused silica window during float. Four matched shielded controls sit inside the same incubator. Radiation is the <em>only</em> difference.</p>
+              <p>All hardware designs, protocols, and software are being published open-source — establishing a reusable template for future stratospheric biology on BEXUS.</p>
+            </div>
+            <div class="tab-visual">
+              <div class="img-placeholder">
+                <span class="placeholder-label">RENDER</span>
+                <span class="placeholder-desc">HELIA cutaway — dual-wall insulation, flask tower, shutter visible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: The Flight -->
+        <div class="tab-panel" id="tab-flight" role="tabpanel">
+          <div class="tab-layout tab-layout--flight">
+            <div class="tab-text">
+              <h3>From Esrange to the stratosphere</h3>
+              <p>HELIA launches aboard BEXUS 39 from Esrange Space Center in northern Sweden. After a ~2-hour ascent, the payload floats at ~25 km for several hours.</p>
+              <p>At float, the iris shutter opens for 10 controlled cycles (1 min open / 5 sec closed), delivering ~11 minutes of cumulative UV exposure. Fluorescence is monitored throughout. At the end of float, an automated fluidic system injects RNAlater to preserve the cells' transcriptional state mid-flight.</p>
+              <p>Post-landing, samples return to the University of Nottingham for RNA sequencing on an Illumina HiSeq platform.</p>
+            </div>
+            <div class="tab-visual">
+              <div class="flight-profile">
+                <svg class="altitude-svg" viewBox="0 0 700 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="HELIA flight altitude profile">
+                  <!-- Grid lines -->
+                  <line x1="60" y1="40"  x2="660" y2="40"  stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <line x1="60" y1="100" x2="660" y2="100" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <line x1="60" y1="160" x2="660" y2="160" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <line x1="60" y1="220" x2="660" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <line x1="60" y1="280" x2="660" y2="280" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <!-- Y axis labels -->
+                  <text x="50" y="44"  fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Inter,sans-serif">30km</text>
+                  <text x="50" y="104" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Inter,sans-serif">20km</text>
+                  <text x="50" y="164" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Inter,sans-serif">10km</text>
+                  <text x="50" y="284" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Inter,sans-serif">0km</text>
+                  <!-- Float zone highlight -->
+                  <rect x="230" y="40" width="260" height="30" fill="rgba(255,255,255,0.04)" rx="2"/>
+                  <!-- Float zone label -->
+                  <text x="360" y="30" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle" font-family="Inter,sans-serif" letter-spacing="1">FLOAT ~25km</text>
+                  <!-- UV Exposure bracket -->
+                  <line x1="280" y1="58" x2="440" y2="58" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+                  <text x="360" y="76" fill="rgba(255,255,255,0.6)" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" letter-spacing="0.5">UV EXPOSURE WINDOW</text>
+                  <!-- RNAlater marker -->
+                  <circle cx="460" cy="52" r="3" fill="white" opacity="0.8"/>
+                  <text x="464" y="48" fill="rgba(255,255,255,0.6)" font-size="9" font-family="Inter,sans-serif">RNAlater</text>
+                  <!-- Altitude path -->
+                  <path id="altitude-path" d="M 60 280 C 100 278, 160 260, 230 52 L 490 52 C 560 52, 620 268, 660 280" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                  <!-- Phase labels -->
+                  <text x="145" y="210" fill="rgba(255,255,255,0.4)" font-size="10" text-anchor="middle" font-family="Inter,sans-serif" letter-spacing="0.5">ASCENT</text>
+                  <text x="575" y="210" fill="rgba(255,255,255,0.4)" font-size="10" text-anchor="middle" font-family="Inter,sans-serif" letter-spacing="0.5">DESCENT</text>
+                  <text x="60" y="298"  fill="rgba(255,255,255,0.4)" font-size="10" font-family="Inter,sans-serif">LAUNCH</text>
+                  <text x="640" y="298" fill="rgba(255,255,255,0.4)" font-size="10" text-anchor="end" font-family="Inter,sans-serif">LANDING</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tab-panels -->
+    </div><!-- /tabs-wrapper -->
+  </section>
+
+  <!-- ══════════════════════════════════════ THE SCIENCE ═══ -->
+  <section id="the-science">
+    <div class="section-header reveal">
+      <span class="section-tag">02 — THE SCIENCE</span>
+      <h2 class="section-title">What Are We Studying?</h2>
+    </div>
+
+    <div class="subsection-nav" role="tablist" aria-label="Science subsections">
+      <button class="subsection-btn active" data-subsection="biology">Biology</button>
+      <button class="subsection-btn" data-subsection="methodology">Methodology</button>
+      <button class="subsection-btn" data-subsection="analysis">Analysis</button>
+    </div>
+
+    <!-- Biology -->
+    <div class="subsection active" id="sub-biology">
+      <div class="carousel" data-carousel="biology">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Why Endothelial Cells?</h3>
+                <p>Human Umbilical Vein Endothelial Cells (HUVECs) line the innermost surface of every blood vessel in the body. They are the vascular system's first line of defence against radiation damage — responding rapidly to oxidative stress and DNA injury.</p>
+                <p>Their role in inflammatory signalling and coagulation makes them highly relevant to spaceflight radiation risk research. Vascular dysfunction is a recognised component of radiation-induced injury in astronauts.</p>
+                <p>HUVECs are also sensitive enough to show measurable responses to the radiation doses available at 25 km, making them an ideal model for stratospheric biology.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">PHOTO</span>
+                  <span class="placeholder-desc">Microscopy image of HUVEC monolayer (biology team to capture in lab)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">In-Flight Monitoring</h3>
+                <p>Cells are stained on launch morning with Calcein-AM — a dye that only fluoresces inside living cells. Intracellular esterases hydrolyse it into a green-emitting compound; the brighter the signal, the more metabolically active the cell.</p>
+                <p>A 450 nm blue LED excites the dye continuously throughout the flight. Dedicated photodiodes measure the resulting green fluorescence (~517 nm) in real time, giving us a live window into cellular health across the entire exposure period.</p>
+                <p>A reduction in fluorescence signal during UV exposure is our primary in-flight indicator of radiation-induced cellular stress.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">PHOTO</span>
+                  <span class="placeholder-desc">T12.5 flask glowing green under blue LED excitation — take in darkened lab</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Post-Flight Analysis</h3>
+                <p>At the end of float, RNAlater is injected automatically into every flask, halting transcriptional activity and locking the cells' molecular state at the moment of peak radiation exposure.</p>
+                <p>Back at the University of Nottingham Biodiscovery Institute, RNA is extracted using TRIzol and assessed for quality on a NanoDrop spectrophotometer before sequencing on an Illumina HiSeq platform (~20M paired-end reads per sample).</p>
+                <p>Bioinformatic analysis targets three pathways: <strong>oxidative stress response</strong>, <strong>inflammatory signalling</strong>, and <strong>DNA damage response</strong> — the primary markers of radiation-induced vascular injury.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">PHOTO</span>
+                  <span class="placeholder-desc">Lab bench with NanoDrop / RNA extraction setup at Biodiscovery Institute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Methodology -->
+    <div class="subsection" id="sub-methodology">
+      <div class="carousel" data-carousel="methodology">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Isolating the Variable</h3>
+                <p>Every parameter that could confound radiation effects is actively controlled inside the HELIA incubator: pressure is held at <strong>1 atm</strong>, temperature at <strong>35 ± 5°C</strong>, CO₂ at ~5%, and humidity high enough to prevent cell dehydration.</p>
+                <p>By neutralising hypobaria, extreme cold, and desiccation, radiation becomes the sole independent variable. This is the first stratospheric biology experiment specifically designed with this level of environmental isolation.</p>
+                <p>Continuous sensor logging (pressure, temperature, CO₂, humidity, O₂, altitude, accelerometry) provides the evidence base to confirm all non-radiative stressors remained within acceptable bounds throughout the flight.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Diagram of controlled variables — pressure, temp, CO₂, humidity annotated on HELIA cross-section</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">Exposure Strategy</h3>
+                <p>At float (~25 km), the iris shutter opens for a controlled sequence: <strong>10 cycles of 1-minute exposure</strong> followed by 5-second closures — giving ~11 minutes of cumulative stratospheric UV.</p>
+                <p>The brief closure intervals support photonic sensor recalibration and maintain measurement stability. UV dose at the payload aperture is recorded continuously by dedicated UVC/UVB photodiodes, building a precise dose profile correlated with the biological fluorescence signal.</p>
+                <p>Four exposed flasks and four shielded control flasks sit in the same thermal environment, allowing direct comparison of irradiated vs. non-irradiated cells under identical conditions.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Top-down render of iris shutter open vs closed state</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Ground Controls</h3>
+                <p>A matched post-flight ground test is run 2–3 days after landing using the same flight hardware, same cell preparation, same media conditions, and same exposure sequence timing.</p>
+                <p>Since the test runs post-flight, the exact duration of the float phase is known, allowing RNAlater injection to be timed precisely relative to the exposure window — ensuring a biologically consistent fixation point for downstream analysis.</p>
+                <p>This provides a baseline that captures all mechanical and thermal effects of the hardware while eliminating the stratospheric radiation variable, enabling direct comparison with flight samples.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">PHOTO</span>
+                  <span class="placeholder-desc">Ground test rig running at the University of Nottingham lab bench</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analysis -->
+    <div class="subsection" id="sub-analysis">
+      <div class="carousel" data-carousel="analysis">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Fluorescence vs UV Dose</h3>
+                <p>The primary in-flight data product is a time-resolved Calcein-AM fluorescence trace for each flask, sampled continuously throughout ascent, exposure, and post-fixation descent.</p>
+                <p>This is correlated with the cumulative UV dose logged by the aperture photodiodes. A dose-dependent drop in fluorescence intensity across the exposed flasks — absent in the shielded controls — would be the key biological signal confirming radiation-induced cellular stress.</p>
+                <p>Environmental telemetry (temperature, pressure, CO₂, humidity, altitude) serves as the validation dataset confirming that all secondary stressors remained controlled.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">GRAPHIC</span>
+                  <span class="placeholder-desc">Fluorescence intensity vs time chart with UV exposure windows annotated</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">Transcriptomics</h3>
+                <p>RNA sequencing yields differential gene expression data (DESeq2, adjusted p &lt; 0.05) comparing flight-exposed samples against matched ground controls. Reads are aligned to the GRCh38 human reference genome using STAR and quantified with featureCounts.</p>
+                <p>The analysis focuses on three key pathway groups: <strong>oxidative stress</strong> (ROS-induced gene upregulation), <strong>inflammatory signalling</strong> (NF-κB pathway, cytokine genes), and <strong>DNA damage response</strong> (repair genes, apoptotic markers).</p>
+                <p>Biological replicates across the four exposed flasks ensure statistical robustness of the differential expression results.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">GRAPHIC</span>
+                  <span class="placeholder-desc">Volcano plot / pathway diagram for oxidative stress, inflammation, DNA damage — placeholder for post-flight results</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Open-Source Legacy</h3>
+                <p>HELIA is designed from the ground up to be reproducible. All structural CAD, PCB schematics, flight software, ground support software, and biological protocols will be published openly following the mission.</p>
+                <p>The platform is modular — the same incubator architecture can support different cell lines, different radiation environments, or different biological experiments with minimal modification.</p>
+                <p>Our goal is to establish HELIA as a validated, low-cost template that removes the engineering barrier for future student and professional stratospheric biology missions worldwide.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">GRAPHIC</span>
+                  <span class="placeholder-desc">Open-source platform diagram — HELIA MK1 as foundation for future iterations</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════ THE TECH ═══ -->
+  <section id="the-tech">
+    <div class="section-header reveal">
+      <span class="section-tag">03 — THE TECH</span>
+      <h2 class="section-title">How We Built It</h2>
+    </div>
+
+    <div class="subsection-nav" role="tablist" aria-label="Tech subsections">
+      <button class="subsection-btn active" data-subsection="structure">Structure</button>
+      <button class="subsection-btn" data-subsection="fluidics">Fluidics</button>
+      <button class="subsection-btn" data-subsection="photonics">Photonics</button>
+      <button class="subsection-btn" data-subsection="thermal">Thermal</button>
+      <button class="subsection-btn" data-subsection="software">Computer System</button>
+    </div>
+
+    <!-- Structure -->
+    <div class="subsection active" id="sub-structure">
+      <div class="carousel" data-carousel="structure">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Pressurised Skylab Tower</h3>
+                <p>HELIA's primary structure is a dual-wall cylindrical tower machined from AL5251 aluminium sheet, measuring 620 × 310 mm and weighing 14.18 kg. The gap between the inner and outer walls houses 3 cm of Spacetherm A1 aerogel insulation (λ = 0.0195 W/m·K).</p>
+                <p>The vessel maintains 1 atm internal pressure against near-vacuum at float altitude. Hoop stress analysis confirms a safety margin of ~20× over AL5251's yield strength of 150 MPa.</p>
+                <p>The bottom baseplate is the primary access point, sealed with 12 × M10 screws and a rubber gasket. The top retention ring clamps the UV window assembly.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Full exploded assembly view — outer shell, aerogel layer, inner frame, flask tower, all separated on vertical axis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">UV Fused Silica Window</h3>
+                <p>Two UV-grade fused silica optical windows sit in the top face of the tower. Fused silica was selected from an 8-material decision matrix — outscoring synthetic sapphire, quartz, and fluoropolymer films on the combined criteria of UV transmission bandwidth, durability, and cost.</p>
+                <p>Window bending stress analysis gives a safety factor of 2.25 against the modulus of rupture (~60 MPa for fused silica) under the 1 atm pressure differential. Each window is cushioned by two O-rings and clamped with flat-bottomed M5 screws to distribute load uniformly.</p>
+                <p>The paired-window design also traps an air gap, contributing passive thermal insulation to the top face of the payload.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Top-face assembly — UV fused silica windows, O-ring seals, retention ring, M5 bolt pattern</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Gondola Integration</h3>
+                <p>HELIA mounts on the BEXUS ESCARGO gondola via a 300 × 300 mm Bosch profile fixture, elevated on six 20 × 20 mm aluminium struts. The elevated position maximises UV access and prevents shadow interference from adjacent experiments.</p>
+                <p>The baseplate houses all external interfaces: an Amphenol PT02E8-4P power port, Socapex RJ45 Ethernet for E-Link telemetry, a momentary power switch, a Schrader valve for ground CO₂ fill, and a burst disc safety feature designed to fail before any structural yield occurs.</p>
+                <p>All external ports are hermetically sealed with gaskets and O-rings. External barometer sensors use hermetic wire feedthroughs to penetrate the aerogel layer without compromising internal pressure.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">HELIA seated on ESCARGO gondola — baseplate fixture, port locations labelled</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fluidics -->
+    <div class="subsection" id="sub-fluidics">
+      <div class="carousel" data-carousel="fluidics">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Automated RNAlater Delivery</h3>
+                <p>At the end of float, an automated fluidics system must inject 5 mL of RNAlater into each of the eight cell flasks simultaneously — halting transcriptional activity and preserving the cells' molecular state mid-flight, 25 km above the ground.</p>
+                <p>A NEMA 17 stepper motor drives a GT2 belt-and-pulley system that rotates a T8 leadscrew, converting rotary motion to linear displacement. The leadscrew nut drives a pusher block along two guide rods, simultaneously compressing two 25 mL syringes.</p>
+                <p>The ESP32 sends timed step pulses to the stepper driver, giving precise volumetric control over the injection rate and total volume delivered to each flask.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Fluidics mechanism — stepper motor, belt, leadscrew, pusher block, and syringes isolated on dark background</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">Distribution Network</h3>
+                <p>From each syringe, RNAlater travels through 3/16" silicone tubing to a Y-fitting, splitting into two lines, then through two further Y-fittings to reach four 21G needles — one per flask. Check valves prevent backflow between branches.</p>
+                <p>All junctions use Luer-lock connections: male-to-barb and female-to-barb fittings provide sterile, pressure-tight interfaces that can be assembled inside a laminar flow hood at Esrange on launch morning.</p>
+                <p>During injection, displaced air exits through the PTFE vent membranes on the flask caps. Passive mixing occurs through gondola motion during flight and descent, validated through ground testing before launch.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Fluidics distribution schematic — syringe → Y-fittings → 4 needles into flask tower, overlaid on transparent render</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">CO₂ Environment</h3>
+                <p>Before launch, the HELIA internal atmosphere is enriched to ~5% CO₂ via a Schrader valve in the baseplate. This maintains the pH stability of the cell culture medium throughout the flight — matching standard laboratory incubator conditions.</p>
+                <p>A small disposable CO₂ cartridge (8 g or 16 g) with an integrated pressure regulator is available as a backup if launch-site CO₂ supply is unavailable, keeping the biological preparation independent of launch facility resources.</p>
+                <p>An SCD41 sensor monitors CO₂ concentration inside the incubator throughout the flight, with data logged to both on-board storage and transmitted to the ground support station in real time.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Baseplate ports labelled — Schrader valve, CO₂ cartridge connection, burst disc, electrical ports</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photonics -->
+    <div class="subsection" id="sub-photonics">
+      <div class="carousel" data-carousel="photonics">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Fluorescence Spectroscopy</h3>
+                <p>A 450 nm blue LED excites the Calcein-AM dye inside each cell flask. The resulting green fluorescence (~517 nm) is detected by SMD photodiodes mounted in a custom PCB around the flask array.</p>
+                <p>A quad op-amp front-end amplifies and filters the weak photodiode signals before they reach a high-resolution ADC. The circuit architecture is designed to suppress ambient light and optical crosstalk between flasks, isolating the biological fluorescence signal from background noise.</p>
+                <p>Each flask is sampled independently, giving a simultaneous 8-channel fluorescence trace throughout the entire flight — exposed and shielded samples tracked in parallel.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Photonics PCB in context — LED/photodiode positions relative to flask array inside tower</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">UV Dose Measurement</h3>
+                <p>Dedicated UVC and UVB photodiodes sit at the payload aperture, measuring incoming solar UV flux in real time throughout the exposure window. UV-A, B, and C wavelengths are all measured to build a spectrally-resolved cumulative dose profile.</p>
+                <p>This data is the quantitative input to the fluorescence correlation: every change in cellular fluorescence signal can be mapped to a precise UV dose at that moment in the flight, enabling dose-response analysis post-flight.</p>
+                <p>The photodiode signals are conditioned through the same op-amp front-end as the fluorescence channels and logged at high frequency to the on-board SD cards and downlinked to the ground station.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">PHOTO</span>
+                  <span class="placeholder-desc">Blue LED exciting a Calcein-stained flask in a darkened room — visually striking lab photo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Iris Shutter Mechanism</h3>
+                <p>A servo-driven iris shutter sits beneath the UV fused silica windows. It remains closed during ascent and descent to protect the cells and sensors from uncontrolled radiation exposure, opening only during the programmed float-phase exposure cycles.</p>
+                <p>The iris design allows precise, repeatable open/close actuation at altitude and provides a known optical aperture for UV dose calculations. Closure periods between exposure cycles also serve as dark-state calibration windows for the fluorescence photodiodes.</p>
+                <p>Shutter state is logged throughout the flight, and a heartbeat from the shutter controller is included in the system-wide health monitoring via the CAN bus.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Top-down render: iris shutter open state vs closed state, side by side — UV window visible behind</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thermal -->
+    <div class="subsection" id="sub-thermal">
+      <div class="carousel" data-carousel="thermal">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">The Challenge</h3>
+                <p>HUVEC cells require 35 ± 5°C throughout a flight profile that passes through -50°C stratospheric air during a 2-hour ascent — then faces intense solar IR during float. After RNAlater injection, the payload must actively cool to below 4°C to preserve the samples for recovery.</p>
+                <p>The thermal system must therefore work in both directions: heating during the cold ascent phase and cooling during the warm float phase, all within a tight power budget drawing from the BEXUS 28V supply.</p>
+                <p>Peak heating demand occurs during ascent at ~28 W. At float, with solar gain, the system holds temperature passively at ~2.5 W net thermal power.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">GRAPHIC</span>
+                  <span class="placeholder-desc">Temperature vs time plot (cleaned from SED Fig 4.25/4.26) — white lines on black, HELIA brand style</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">Active Thermal Control</h3>
+                <p>Patch heaters handle warming during the cold ascent phase, bonded to the inner aluminium walls and flask surrounds. Peltier devices handle cooling during the solar-gain float phase, dumping heat to the inner environment via heatsinks and fans.</p>
+                <p>Thermistors mounted throughout the payload feed a closed-loop temperature controller running on the thermal ESP32. Each thermal component has been individually characterised and included in a lumped thermal network model validated against flight prediction data.</p>
+                <p>Post-RNAlater injection, the Peltiers are driven hard to cool the internal volume below 4°C before landing — starting a cold chain that continues through sample recovery and transport back to Nottingham.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Exploded view highlighting insulation + Peltier placement — insulation layer coloured distinctly from structure</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Passive Insulation</h3>
+                <p>Three centimetres of Spacetherm A1 aerogel insulation (λ = 0.0195 W/m·K, ρ = 184 kg/m³) is sandwiched between the inner and outer aluminium walls, giving a cylindrical thermal resistance of 3.84 K/W.</p>
+                <p>The inner walls use low-absorptivity, low-emissivity bare aluminium (α = 0.2, ε = 0.09): reducing solar heat absorption and radiative losses to minimise heater demand. The outer walls use a high-absorptivity coating (α = 0.9) to harvest solar heat during float — reducing active heating requirements by absorbing and retaining ambient radiation.</p>
+                <p>The paired UV fused silica windows create a trapped air gap at the top face, extending passive insulation to the exposure aperture without blocking UV.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">RENDER</span>
+                  <span class="placeholder-desc">Cross-section showing aerogel layer — Spacetherm A1 highlighted in contrast colour between inner/outer walls</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Computer System -->
+    <div class="subsection" id="sub-software">
+      <div class="carousel" data-carousel="software">
+        <div class="carousel-slides">
+
+          <div class="carousel-slide active">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">01 / 03</span>
+                <h3 class="slide-heading">Distributed Flight Software</h3>
+                <p>HELIA's flight software is distributed across <strong>6 × ESP32-S3 microcontrollers</strong>, each responsible for a distinct subsystem: mission control, photonics, thermal, fluidics, and power monitoring. All nodes communicate over a 500 kbps CAN bus.</p>
+                <p>Every ESP32 broadcasts a heartbeat twice per second. If a node falls silent, the system triggers a recovery sequence. In the worst case — OBDH failure with no ground contact — the software attempts an emergency fluidics injection to preserve the RNA samples before powering down.</p>
+                <p>The software follows NASA/JPL coding guidelines: no infinite loops, no recursion, no dynamic memory allocation. Hardware watchdogs reset any node that hangs within 2000 ms.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">DIAGRAM</span>
+                  <span class="placeholder-desc">CAN bus block diagram (cleaned from SED Fig 4.31) — each ESP32 node labelled, dark background, white lines</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">02 / 03</span>
+                <h3 class="slide-heading">Data &amp; Telemetry</h3>
+                <p>All CAN bus traffic is logged in binary format to <strong>two industrial-grade SD cards in RAID-1 mirror</strong>. Every boot increments a file counter, preventing a mid-flight reset from overwriting previous data. Even if one card fails, the second preserves the complete flight dataset.</p>
+                <p>Telemetry is transmitted to ground over the BEXUS E-Link via UDP — chosen over TCP for lower latency. A custom application-layer header with a rolling sequence counter enables packet-loss detection without the retransmission overhead of TCP. At ~652 CAN frames/s, total bus load stays under 25% of capacity.</p>
+                <p>Ground commands (shutter open/close, mode changes) are sent uplink with lightweight retransmission logic to ensure reliability over the lossy radio link.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">DIAGRAM</span>
+                  <span class="placeholder-desc">Computer system block diagram (SED Fig 4.30) — cleaned up in HELIA brand style</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-layout">
+              <div class="slide-text">
+                <span class="slide-num">03 / 03</span>
+                <h3 class="slide-heading">Ground Support Software</h3>
+                <p>The Ground Support Software (GSS) is a Python 3 + Qt desktop application giving operators real-time situational awareness during flight. The backend and frontend are fully decoupled — a GUI freeze cannot interrupt the background telemetry logging.</p>
+                <p>pyqtgraph delivers &gt;60 fps live plots of all sensor streams: fluorescence channels, temperature, pressure, CO₂, altitude, and power consumption. Operators can identify anomalies and issue manual commands within seconds of an event occurring at 25 km altitude.</p>
+                <p>The GSS also archives all received telemetry locally, providing a backup dataset in case of on-board storage failure — and a complete, timestamped record for post-flight analysis.</p>
+              </div>
+              <div class="slide-visual">
+                <div class="img-placeholder">
+                  <span class="placeholder-label">SCREENSHOT</span>
+                  <span class="placeholder-desc">GSS live telemetry dashboard running — fluorescence plots, temperature traces, altitude readout</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-nav">
+          <button class="c-btn active" data-slide="0" aria-label="Slide 1">01</button>
+          <button class="c-btn" data-slide="1" aria-label="Slide 2">02</button>
+          <button class="c-btn" data-slide="2" aria-label="Slide 3">03</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════ SPONSOR ═══ -->
+  <section id="sponsor">
+    <div class="section-header reveal">
+      <span class="section-tag">04 — SPONSOR US</span>
+      <h2 class="section-title">Back the Mission</h2>
+    </div>
+    <div class="sponsor-layout reveal">
+      <div class="sponsor-text">
+        <p class="sponsor-lead">Project HELIA is a fully student-led mission from the University of Nottingham. We're not just building a science experiment — we're building a reusable, open-source platform that lowers the barrier for biological research in space.</p>
+        <p>Your support directly funds the hardware, biological consumables, and the cells themselves — real human endothelial cells that will fly to 25 km and come home with data no experiment has collected before.</p>
+        <div class="sponsor-costs">
+          <div class="cost-item">
+            <span class="cost-value">~£4,700</span>
+            <span class="cost-label">Hardware per unit</span>
+          </div>
+          <div class="cost-item">
+            <span class="cost-value">~£14,500</span>
+            <span class="cost-label">Science consumables</span>
+          </div>
+        </div>
+        <div class="sponsor-ctas">
+          <a href="mailto:project-helia-official@proton.me" class="btn-primary">Get in Touch</a>
+          <a href="mailto:space@uonsu.com" class="btn-outline">NottSpace Society</a>
+        </div>
+      </div>
+      <div class="sponsor-visual">
+        <div class="img-placeholder">
+          <span class="placeholder-label">RENDER</span>
+          <span class="placeholder-desc">Hero render — HELIA tower on gondola, dramatic lighting, black void background</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ FOOTER ═══ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-patch footer-patch">
+          <img src="assets/helia-patch.png" alt="Project HELIA patch" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="patch-placeholder">H</div>
+        </div>
+        <div>
+          <p class="footer-name">PROJECT HELIA</p>
+          <p class="footer-sub">University of Nottingham &nbsp;·&nbsp; BEXUS 39</p>
+        </div>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8.5"/><path d="M12 11v5M12 11a3 3 0 0 1 6 0v5"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="#" class="social-link" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#" class="social-link" aria-label="NottSpace Linktree">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span>NottSpace</span>
+        </a>
+      </div>
+
+      <p class="footer-copy">© 2026 Project HELIA · University of Nottingham · Supported by NottSpace</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
