@@ -48,6 +48,9 @@ export default function Home() {
         className="hero-sky relative flex min-h-screen scroll-mt-20 items-center justify-center overflow-hidden px-gutter pt-35 pb-25"
       >
         <Image src={HERO_BACKGROUND} alt="" fill className="object-cover" />
+        {/* Same dark wash as the other photo sections. Lower the number
+                to show more of the photo, raise it for more contrast. */}
+        <div className="absolute inset-0 bg-ink/30" />
 
         <div className="relative z-10 flex w-full max-w-[800px] flex-col items-center text-center">
           <p className="mb-[22px] text-xs font-semibold uppercase tracking-[3px] text-accent">
