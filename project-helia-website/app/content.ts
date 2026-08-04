@@ -7,7 +7,7 @@ export const SITE_NAME = "Project Helia";
 // any blank padding first, or the artwork renders far smaller than the box.
 export const LOGO_URL = "/HELIA_logo_trimmed.png";
 export const SITE_TAGLINE = "Nottingham Space Society's";
-export const HERO_BACKGROUND = "/6081E982-B82E-42E1-BE73-A55CE3CCB419.PNG";
+export const HERO_BACKGROUND = "/36FB0F5E-FD37-439B-9D61-8A920202947D.PNG";
 export const HERO_DESCRIPTION =
   "A student-engineered rocket, built from propulsion to recovery. Follow the build as we count down to launch.";
 
