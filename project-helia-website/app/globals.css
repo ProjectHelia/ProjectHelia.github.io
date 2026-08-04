@@ -63,7 +63,19 @@
   );
 }
 
-/* Cyan glow on hover, for the nav links and the nav logo */
+/* Cyan glow on hover that traces the artwork's own outline rather than its
+   bounding box — for logos and icons, where a rectangle would look wrong. */
+@utility halo-shape {
+  transition: filter 200ms;
+
+  &:hover {
+    filter: drop-shadow(
+      0 0 7px color-mix(in srgb, var(--color-accent) 75%, transparent)
+    );
+  }
+}
+
+/* Cyan glow on hover, for the nav links */
 @utility halo {
   transition:
     background-color 200ms,

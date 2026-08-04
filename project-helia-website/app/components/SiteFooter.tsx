@@ -46,7 +46,7 @@ export default function SiteFooter() {
         <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-12 border-b border-white/10 pb-14">
           <div>
             <div className="mb-3.5">
-              <Logo size={64} />
+              <Logo size={56} />
             </div>
             <p className="max-w-[280px] text-sm leading-[1.6] text-white/55">
               {FOOTER_DESCRIPTION}

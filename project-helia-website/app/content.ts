@@ -2,10 +2,10 @@
 // Colors, fonts and spacing live in globals.css instead.
 
 export const SITE_NAME = "Project Helia";
-// Swap this for any shape — the logo is sized by height, so a square or
-// round file works without touching the component.
-export const LOGO_URL =
-  "/619280563_17850585753656697_3928571469123390026_n.jpg";
+// Swap this for any shape — the logo is sized by height, so a wordmark, a
+// square or a round file all work without touching the component. Crop off
+// any blank padding first, or the artwork renders far smaller than the box.
+export const LOGO_URL = "/HELIA_logo_trimmed.png";
 export const SITE_TAGLINE = "Nottingham Space Society's";
 export const HERO_BACKGROUND = "/620A56F8-F659-48FF-947C-37385618DECA.PNG";
 export const HERO_DESCRIPTION =
@@ -71,10 +71,39 @@ export type TeamMember = {
 
 // Placeholder roster — swap in real names and roles when ready.
 export const TEAM_MEMBERS: TeamMember[] = [
-  { name: "Member Name", role: "Role / Subteam" },
-  { name: "Member Name", role: "Role / Subteam" },
-  { name: "Member Name", role: "Role / Subteam" },
-  { name: "Member Name", role: "Role / Subteam" },
+  { name: "Harry Kaye", role: "Project Manager", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Harshvardhan Rana",
+    role: "Systems Engineer",
+    photoUrl: "/IMG_5044.JPG",
+  },
+  { name: "Harry Szpuk", role: "Software Lead", photoUrl: "/IMG_5044.JPG" },
+  { name: "Kyane Perera", role: "Electrical Lead", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Ryuichi Nakamura",
+    role: "Mechanical Lead",
+    photoUrl: "/IMG_5044.JPG",
+  },
+  { name: "Sally Robinson", role: "Science Lead", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Konstantinos Konstantinidis",
+    role: "Fluidics Lead",
+    photoUrl: "/IMG_5044.JPG",
+  },
+  { name: "Rujul Wankhede", role: "Thermal Lead", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Sayyed Farbod Rassouli",
+    role: "Mission analyst",
+    photoUrl: "/IMG_5044.JPG",
+  },
+  { name: "Jeevan Natt", role: "Shutter system", photoUrl: "/IMG_5044.JPG" },
+  { name: "Aarav Shah", role: "Thermal Design", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Chrysler Viegas",
+    role: "Electrical Team",
+    photoUrl: "/IMG_5044.JPG",
+  },
+  { name: "Tsz Ryan Au", role: "Mechanical Team", photoUrl: "/IMG_5044.JPG" },
 ];
 
 export type Sponsor = {
@@ -91,9 +120,12 @@ export const SPONSORS: Sponsor[] = [
   {
     name: "Nottingham Biodiscovery Institute",
     logoUrl: "/1784538772632.png",
+    websiteUrl:
+      "https://www.nottingham.ac.uk/research/research-areas/biodiscovery-institute/biodiscovery-institute.aspx",
   },
   {
     name: "Hamamatsu Photonics",
     logoUrl: "/Hamamatsu.png",
+    websiteUrl: "https://www.hamamatsu.com/jp/en.html",
   },
 ];

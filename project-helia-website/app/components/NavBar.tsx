@@ -32,7 +32,7 @@ export default function NavBar() {
     // 1fr / auto / 1fr centers the middle column no matter how wide the
     // logo is — the empty third column is a spacer that balances it.
     <nav className="fixed inset-x-0 top-0 z-100 grid grid-cols-[1fr_auto_1fr] items-center border-b border-white/8 bg-nav/65 px-gutter py-3.5 backdrop-blur-lg">
-      <a href="#home" className="halo justify-self-start rounded-full">
+      <a href="#home" className="halo-shape justify-self-start">
         <Logo />
       </a>
 

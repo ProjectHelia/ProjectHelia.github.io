@@ -16,6 +16,7 @@ import {
   INSTAGRAM_URL,
   LAUNCH_DATE,
   LAUNCH_WINDOW_LABEL,
+  LOGO_URL,
   PROGRAM_BACKGROUND_URL,
   PROGRAM_DESCRIPTION,
   PROGRAM_LINK_LABEL,
@@ -53,9 +54,19 @@ export default function Home() {
             {SITE_TAGLINE}
           </p>
 
-          <h1 className="mb-[22px] text-[clamp(48px,7vw,96px)] font-extrabold leading-none tracking-[-2px] text-white">
-            {firstWord}{" "}
-            <span className="text-accent">{restOfName.join(" ")}</span>
+          {/* "Project" stays as text; "Helia" is the logo artwork. Its height
+              is ~72% of the font size, which is roughly the cap height of the
+              word beside it, so the two line up as one wordmark. */}
+          <h1 className="mb-[22px] flex flex-wrap items-center justify-center gap-x-[0.25em] text-[clamp(48px,7vw,96px)] font-extrabold leading-none tracking-[-2px] text-white">
+            {firstWord}
+            <Image
+              src={LOGO_URL}
+              alt={restOfName.join(" ")}
+              width={909}
+              height={205}
+              priority
+              className="h-[clamp(35px,5vw,69px)] w-auto"
+            />
           </h1>
 
           <p className="mb-14 max-w-[480px] text-[clamp(16px,1.6vw,20px)] leading-[1.6] text-white/65">
@@ -211,9 +222,16 @@ export default function Home() {
         id="team"
         className="relative scroll-mt-20 overflow-hidden bg-page px-gutter pt-10 pb-24"
       >
-        <Image src={TEAM_PHOTO_URL} alt="" fill className="object-cover" />
-        {/* Same dark wash as the blog section, so white text reads over it. */}
-        <div className="absolute inset-0 bg-ink/60" />
+        {/* Blurred so the group photo reads as texture rather than as a second
+            set of faces competing with the headshots. scale-110 hides the soft
+            edges blur leaves at the section boundary. */}
+        <Image
+          src={TEAM_PHOTO_URL}
+          alt=""
+          fill
+          className="scale-110 object-cover blur-sm"
+        />
+        <div className="absolute inset-0 bg-ink/70" />
 
         <div className="relative z-10 mx-auto max-w-7xl">
           <SectionHeading
