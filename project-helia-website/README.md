@@ -1,6 +1,6 @@
 # Project Helia website
 
-Next.js (App Router) site for Project Helia.
+Next.js (App Router) + Tailwind CSS v4 site for Project Helia.
 
 ## Run it
 
@@ -10,30 +10,44 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Two files you'll edit most
+
+| I want to change... | Go to |
+|---|---|
+| A **color**, the font, or section spacing | [`app/globals.css`](app/globals.css) — the `@theme` block at the top |
+| Any **words**, the launch date, team members, sponsors, links | [`app/content.ts`](app/content.ts) |
+
+Everything else is layout, and lives in the components below.
+
 ## Codebase map
 
 | File | What it does |
 |---|---|
-| [`app/theme.ts`](app/theme.ts) | **All the tunable stuff lives here**: colors, fonts, launch date, nav links, footer text, team roster, sponsor list. Change something here and it updates everywhere it's used. |
-| [`app/page.tsx`](app/page.tsx) | The actual page — nav, hero, about, sponsors, team, footer sections. Pulls all copy/colors from `theme.ts` instead of hardcoding them. |
-| [`app/layout.tsx`](app/layout.tsx) | Root layout: loads the Inter font and sets the page `<title>`. |
-| [`app/globals.css`](app/globals.css) | Tailwind import + a couple of global CSS vars (mostly unused now that the page uses inline styles from `theme.ts`). |
-| [`app/components/CountdownTimer.tsx`](app/components/CountdownTimer.tsx) | The DAYS/HRS/MIN/SEC countdown box. Reusable — pass it any `targetDate`. |
-| [`app/components/TeamGrid.tsx`](app/components/TeamGrid.tsx) | Renders a grid of team member cards from a `members` array. |
-| [`app/components/SponsorGrid.tsx`](app/components/SponsorGrid.tsx) | Renders a grid of sponsor logo boxes from a `sponsors` array. Give a sponsor a `logoUrl` and it'll show the image instead of the placeholder text. |
+| [`app/globals.css`](app/globals.css) | Design tokens (`@theme`) + the long decorative gradients (`@utility`). Every `--color-X` here automatically becomes `bg-X`, `text-X` and `border-X` classes. |
+| [`app/content.ts`](app/content.ts) | All the site's copy and data — headings, paragraphs, nav links, team roster, sponsor list, launch date. No styling. |
+| [`app/page.tsx`](app/page.tsx) | Assembles the page: hero, about (the REXUS/BEXUS banner), blog, sponsors, team. Mostly just section wrappers. |
+| [`app/layout.tsx`](app/layout.tsx) | Loads the Inter font and sets the browser tab title. |
+| [`app/components/NavBar.tsx`](app/components/NavBar.tsx) | Fixed top nav. Watches which section is on screen and highlights that link. |
+| [`app/components/CountdownTimer.tsx`](app/components/CountdownTimer.tsx) | The DAYS/HRS/MIN/SEC box. Pass it any `targetDate`. |
+| [`app/components/SectionHeading.tsx`](app/components/SectionHeading.tsx) | The small uppercase label + big title above each section. |
+| [`app/components/TeamGrid.tsx`](app/components/TeamGrid.tsx) | Grid of team members. Give a member a `photoUrl` and it shows the photo instead of the striped circle. |
+| [`app/components/SponsorGrid.tsx`](app/components/SponsorGrid.tsx) | Wrapped row of sponsor logos. Give a sponsor a `logoUrl` to show the logo instead of the name, and a `websiteUrl` to make it clickable. |
+| [`app/components/SiteFooter.tsx`](app/components/SiteFooter.tsx) | Footer + the `#contact` anchor. |
+| [`app/components/Logo.tsx`](app/components/Logo.tsx) | The logo image, used by both the nav and the footer. Image lives in `public/`. |
 
-## Common edits
+## Styling notes
 
-- **Change a color** (e.g. the cyan accent, background, text colors) → [`app/theme.ts`](app/theme.ts), the `COLORS` object.
-- **Change the font** → [`app/theme.ts`](app/theme.ts) `FONT_FAMILY`, and swap the font import in [`app/layout.tsx`](app/layout.tsx) if you want a different Google Font.
-- **Change the launch date/time** → [`app/theme.ts`](app/theme.ts) `LAUNCH_DATE`.
-- **Add/remove nav links** → [`app/theme.ts`](app/theme.ts) `NAV_LINKS` (used by both the top nav and the footer).
-- **Add/edit team members** → [`app/theme.ts`](app/theme.ts) `TEAM_MEMBERS`.
-- **Add/edit sponsors** → [`app/theme.ts`](app/theme.ts) `SPONSORS`.
-- **Contact email / footer blurb / copyright** → [`app/theme.ts`](app/theme.ts), the various `*_TEXT`/`*_DESCRIPTION` constants.
-- **Instagram section** → currently a static placeholder mockup inline in [`app/page.tsx`](app/page.tsx) (search for "Instagram — placeholder"). Swap that block for the real embed once you have one.
+Styling is Tailwind utility classes, not inline `style={{}}`. Two conventions worth knowing:
+
+- **Faded colors use a slash**: `text-white/65` is white at 65% opacity, `bg-accent/15` is the cyan at 15%. No need for a separate token per opacity.
+- **Long gradients live in CSS**, not the JSX — `hero-sky`, `stripes` and the `halo` hover glow are custom classes defined with `@utility` in `globals.css`, so the markup stays readable.
+
+Every section carries `scroll-mt-20` so the fixed nav doesn't cover its heading when you jump to it. Smooth scrolling comes from `scroll-behavior: smooth` in `globals.css`.
+
+Sections over a photo (blog, team) lay a `bg-ink/60` div over the image and pass `onPhoto` to `SectionHeading` to switch the text to white. Change that one number to show more or less of the photo.
+
+The Instagram feed is a Juicer embed. Its cards are sized by the `zoom` on `.juicer-feed` at the bottom of `globals.css` — that scales the whole embed rather than fighting Juicer's own card CSS.
 
 ## Notes
 
-- Bootstrapped with `create-next-app`. Uses Tailwind for the base setup, but the imported design (`app/theme.ts` + `app/page.tsx`) uses inline styles pulling from theme constants instead of Tailwind classes, so colors/fonts stay in one place.
-- `next.config.ts` pins `turbopack.root` to this folder — needed because a stray lockfile one level up in `~/` was confusing Next's workspace-root detection.
+- `next.config.ts` pins `turbopack.root` to this folder — needed because a stray lockfile in `~/` was confusing Next's workspace-root detection.

@@ -1,513 +1,233 @@
+import Image from "next/image";
+import Script from "next/script";
 import CountdownTimer from "./components/CountdownTimer";
 import TeamGrid from "./components/TeamGrid";
 import SponsorGrid from "./components/SponsorGrid";
+import NavBar from "./components/NavBar";
+import SectionHeading from "./components/SectionHeading";
+import SiteFooter from "./components/SiteFooter";
 import {
-  ABOUT_HEADING,
-  ABOUT_PARAGRAPHS,
-  COLORS,
-  CONTACT_EMAIL,
-  COPYRIGHT_TEXT,
-  FONT_FAMILY,
-  FOOTER_DESCRIPTION,
+  BLOG_BACKGROUND_URL,
+  BLOG_HEADING,
+  BLOG_PARAGRAPHS,
   HERO_DESCRIPTION,
-  INSTAGRAM_CAPTION,
+  HERO_BACKGROUND,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   LAUNCH_DATE,
   LAUNCH_WINDOW_LABEL,
-  LEGAL_LINKS,
-  NAV_LINKS,
+  PROGRAM_BACKGROUND_URL,
+  PROGRAM_DESCRIPTION,
+  PROGRAM_LINK_LABEL,
+  PROGRAM_LINK_URL,
+  PROGRAM_LOGO_URL,
+  PROGRAM_NAME,
+  TEAM_PHOTO_URL,
   SITE_NAME,
   SITE_TAGLINE,
   SPONSORS,
   TEAM_MEMBERS,
-} from "./theme";
+} from "./content";
 
-function Logo({ size = 22 }: { size?: number }) {
-  return (
-    <span style={{ display: "flex", alignItems: "center", gap: 2, fontWeight: 900, fontSize: size }}>
-      <span>HEL</span>
-      <span style={{ position: "relative", width: 16, height: 22, display: "inline-block" }}>
-        <span
-          style={{
-            position: "absolute",
-            left: 2,
-            top: 2,
-            width: 14,
-            height: 5,
-            background: COLORS.CYAN,
-            borderRadius: 3,
-            transform: "rotate(35deg)",
-          }}
-        />
-        <span
-          style={{
-            position: "absolute",
-            left: 2,
-            top: 2,
-            width: 14,
-            height: 5,
-            background: COLORS.CYAN,
-            borderRadius: 3,
-            transform: "rotate(-35deg)",
-          }}
-        />
-      </span>
-      <span>A</span>
-    </span>
-  );
-}
-
+// Every section is `scroll-mt-20` so the fixed nav doesn't cover its heading
+// when you jump to it from the nav.
 export default function Home() {
-  return (
-    <div
-      style={{
-        fontFamily: FONT_FAMILY,
-        background: COLORS.BG_PAGE,
-        color: COLORS.TEXT_DARK,
-        width: "100%",
-        overflowX: "hidden",
-      }}
-    >
-      {/* NAV */}
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "14px clamp(20px,5vw,64px)",
-          background: COLORS.NAV_BG,
-          backdropFilter: "blur(16px)",
-          borderBottom: `1px solid ${COLORS.NAV_BORDER}`,
-        }}
-      >
-        <a href="#home" style={{ textDecoration: "none", color: COLORS.WHITE }}>
-          <Logo />
-        </a>
-        <div style={{ display: "flex", gap: "clamp(16px,3vw,36px)", flexWrap: "wrap" }}>
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              style={{
-                color: COLORS.NAV_LINK,
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: 14,
-                letterSpacing: 0.3,
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </nav>
+  const [firstWord, ...restOfName] = SITE_NAME.split(" ");
+  // With a photo behind the blog section its text flips to white; without
+  // one the section is plain white and the text stays dark.
+  const onPhoto = Boolean(BLOG_BACKGROUND_URL);
 
-      {/* HERO / HOME */}
+  return (
+    <div className="w-full overflow-x-hidden bg-page text-ink">
+      <NavBar />
+
+      {/* HERO */}
       <section
         id="home"
-        style={{
-          scrollMarginTop: 80,
-          minHeight: "100vh",
-          background: `linear-gradient(180deg,${COLORS.HERO_GRADIENT_TOP} 0%,${COLORS.HERO_GRADIENT_MID_1} 40%,${COLORS.HERO_GRADIENT_MID_2} 68%,${COLORS.HERO_GRADIENT_BOTTOM} 100%)`,
-          position: "relative",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "140px clamp(20px,5vw,64px) 100px",
-          overflow: "hidden",
-        }}
+        className="hero-sky relative flex min-h-screen scroll-mt-20 items-center justify-center overflow-hidden px-gutter pt-35 pb-25"
       >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            opacity: 0.55,
-            backgroundImage: `
-              radial-gradient(1.5px 1.5px at 8% 18%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 22% 8%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 38% 24%, #FFFFFF, transparent),
-              radial-gradient(1.5px 1.5px at 55% 12%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 68% 30%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 78% 6%, #FFFFFF, transparent),
-              radial-gradient(1.5px 1.5px at 88% 22%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 95% 40%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 15% 40%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 45% 45%, #FFFFFF, transparent),
-              radial-gradient(1.5px 1.5px at 30% 55%, #FFFFFF, transparent),
-              radial-gradient(1px 1px at 62% 52%, #FFFFFF, transparent)`,
-          }}
-        />
+        <Image src={HERO_BACKGROUND} alt="" fill className="object-cover" />
 
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-58%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "160%",
-            aspectRatio: "2/1",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle at 50% 0%, rgba(47,199,250,0.30), rgba(47,199,250,0.06) 45%, transparent 70%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-56%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "160%",
-            aspectRatio: "2/1",
-            borderRadius: "50%",
-            borderTop: "1px solid rgba(47,199,250,0.45)",
-          }}
-        />
-
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            maxWidth: 800,
-            margin: "0 auto",
-            width: "100%",
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              color: COLORS.CYAN,
-              fontWeight: 600,
-              fontSize: 12,
-              letterSpacing: 3,
-              textTransform: "uppercase",
-              marginBottom: 22,
-            }}
-          >
+        <div className="relative z-10 flex w-full max-w-[800px] flex-col items-center text-center">
+          <p className="mb-[22px] text-xs font-semibold uppercase tracking-[3px] text-accent">
             {SITE_TAGLINE}
-          </div>
-          <h1
-            style={{
-              margin: "0 0 22px",
-              fontWeight: 800,
-              lineHeight: 1.0,
-              fontSize: "clamp(48px,7vw,96px)",
-              color: COLORS.WHITE,
-              letterSpacing: "-2px",
-            }}
-          >
-            {SITE_NAME.split(" ")[0]} <span style={{ color: COLORS.CYAN }}>{SITE_NAME.split(" ")[1]}</span>
+          </p>
+
+          <h1 className="mb-[22px] text-[clamp(48px,7vw,96px)] font-extrabold leading-none tracking-[-2px] text-white">
+            {firstWord}{" "}
+            <span className="text-accent">{restOfName.join(" ")}</span>
           </h1>
-          <p
-            style={{
-              margin: "0 0 56px",
-              fontSize: "clamp(16px,1.6vw,20px)",
-              lineHeight: 1.6,
-              color: "rgba(255,255,255,0.65)",
-              maxWidth: 480,
-              fontWeight: 400,
-            }}
-          >
+
+          <p className="mb-14 max-w-[480px] text-[clamp(16px,1.6vw,20px)] leading-[1.6] text-white/65">
             {HERO_DESCRIPTION}
           </p>
 
           <CountdownTimer targetDate={LAUNCH_DATE} />
-          <div style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.4)", fontWeight: 400 }}>
+
+          <p className="mt-5 text-[13px] text-white/40">
             {LAUNCH_WINDOW_LABEL}
-          </div>
+          </p>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section id="about" style={{ scrollMarginTop: 80, padding: "120px clamp(20px,5vw,64px)", background: COLORS.BG_PAGE }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: 64,
-            alignItems: "start",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                color: COLORS.TEXT_HEADING,
-                fontWeight: 700,
-                fontSize: 13,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                marginBottom: 16,
-                opacity: 0.55,
-              }}
-            >
-              About
+      {/* ABOUT — the partner programme banner, and what the "About" nav
+          link points at. Drop your files at public/program-logo.png and
+          public/program-background.jpg, then set PROGRAM_LINK_URL. */}
+      <section
+        id="about"
+        className="relative scroll-mt-20 overflow-hidden px-gutter py-24"
+      >
+        <Image
+          src={PROGRAM_BACKGROUND_URL}
+          alt=""
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-ink/60" />
+
+        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+          <Image
+            src={PROGRAM_LOGO_URL}
+            alt={PROGRAM_NAME}
+            width={140}
+            height={140}
+          />
+          <p className="text-lg leading-relaxed text-white">
+            {PROGRAM_DESCRIPTION}
+          </p>
+          <a
+            href={PROGRAM_LINK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-lg bg-gold px-8 py-3 font-bold text-ink shadow-lg shadow-black/40 transition-transform hover:scale-105"
+          >
+            {PROGRAM_LINK_LABEL}
+          </a>
+        </div>
+      </section>
+
+      {/* BLOG — the Building Helia write-up plus the social feed. */}
+      <section
+        id="blog"
+        className="relative scroll-mt-20 overflow-hidden bg-white px-gutter pt-10 pb-24"
+      >
+        {onPhoto && (
+          <>
+            <Image
+              src={BLOG_BACKGROUND_URL}
+              alt=""
+              fill
+              className="object-cover"
+            />
+            {/* Same dark wash as the other photo sections. Lower the number
+                to show more of the photo, raise it for more contrast. */}
+            <div className="absolute inset-0 bg-ink/60" />
+          </>
+        )}
+
+        <div className="relative z-10 mx-auto max-w-7xl">
+          {/* Body copy is capped near 70 characters per line — past that,
+              long lines get noticeably harder to track back to the next one. */}
+          <div className="mx-auto max-w-[680px] text-center">
+            <SectionHeading
+              eyebrow="Blog"
+              title={BLOG_HEADING}
+              centered
+              compact
+              onPhoto={onPhoto}
+            />
+            <div className="space-y-[18px]">
+              {BLOG_PARAGRAPHS.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className={`text-[17px] leading-[1.75] ${
+                    onPhoto ? "text-white/80" : "text-body"
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
-            <h2 style={{ margin: "0 0 24px", fontWeight: 900, fontSize: "clamp(32px,4vw,48px)", letterSpacing: "-0.5px" }}>
-              {ABOUT_HEADING}
-            </h2>
-            {ABOUT_PARAGRAPHS.map((paragraph, i) => (
-              <p
-                key={i}
-                style={{
-                  margin: i === ABOUT_PARAGRAPHS.length - 1 ? 0 : "0 0 18px",
-                  fontSize: 17,
-                  lineHeight: 1.75,
-                  color: COLORS.TEXT_BODY,
-                  maxWidth: 520,
-                }}
-              >
-                {paragraph}
-              </p>
-            ))}
           </div>
 
-          {/* Instagram — placeholder. Swap this block for the real embed later. */}
-          <div>
+          {/* Feed gets the full container width, so each card is wide enough
+              that captions wrap sensibly instead of one word per line. */}
+          <div className="mt-8 min-w-0">
             <div
-              style={{
-                fontSize: 12,
-                letterSpacing: 1.5,
-                color: COLORS.TEXT_FAINT,
-                fontWeight: 700,
-                textTransform: "uppercase",
-                marginBottom: 10,
-              }}
+              className={`mb-5 flex justify-end border-t pt-5 ${
+                onPhoto ? "border-white/20" : "border-line"
+              }`}
             >
-              Instagram — placeholder
-            </div>
-            <div
-              style={{
-                maxWidth: 360,
-                background: COLORS.WHITE,
-                border: `1px solid ${COLORS.BORDER_LIGHT}`,
-                borderRadius: 10,
-                overflow: "hidden",
-                boxShadow: "0 20px 40px -24px rgba(18,21,58,0.25)",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px" }}>
-                <div
-                  style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: "50%",
-                    background:
-                      "repeating-linear-gradient(45deg,#DCE0F0,#DCE0F0 4px,#EEF0F8 4px,#EEF0F8 8px)",
-                  }}
-                />
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontWeight: 700, fontSize: 14, color: COLORS.TEXT_DARK, textDecoration: "none" }}
-                >
-                  {INSTAGRAM_HANDLE}
-                </a>
-              </div>
-              <div
-                style={{
-                  aspectRatio: "1/1",
-                  background:
-                    "repeating-linear-gradient(135deg,#E7E9F2 0px,#E7E9F2 10px,#F2F3F9 10px,#F2F3F9 20px)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: COLORS.TEXT_FAINT,
-                  fontFamily: "monospace",
-                  fontSize: 12,
-                }}
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-sm font-semibold ${
+                  onPhoto
+                    ? "text-white/80 hover:text-white"
+                    : "text-body hover:text-ink"
+                }`}
               >
-                [ POST IMAGE ]
-              </div>
-              <div style={{ padding: 14 }}>
-                <div style={{ fontSize: 14, lineHeight: 1.5, color: COLORS.TEXT_BODY }}>
-                  <span style={{ fontWeight: 700, color: COLORS.TEXT_DARK }}>{INSTAGRAM_HANDLE}</span>{" "}
-                  {INSTAGRAM_CAPTION}
-                </div>
-              </div>
+                Follow @{INSTAGRAM_HANDLE} →
+              </a>
+            </div>
+
+            {/* min-w-0 + overflow-hidden are load-bearing: the feed renders a
+                horizontal carousel, and grid/flex children default to
+                min-width:auto, which lets that carousel's intrinsic width blow
+                its container out to millions of pixels wide. */}
+            <div className="min-w-0 overflow-hidden">
+              <div
+                className="juicer-feed"
+                data-feed-id="projecthelia-20140f1f-fc8f-438b-87e2-e0d8f12c5122"
+                data-per="6"
+              />
+              <Script
+                src="https://www.juicer.io/embed/projecthelia-20140f1f-fc8f-438b-87e2-e0d8f12c5122/embed-code.js"
+                strategy="afterInteractive"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* SPONSORS */}
-      <section id="sponsors" style={{ scrollMarginTop: 80, padding: "120px clamp(20px,5vw,64px)", background: COLORS.BG_SECTION_ALT }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div
-              style={{
-                color: COLORS.TEXT_HEADING,
-                fontWeight: 700,
-                fontSize: 13,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                marginBottom: 16,
-                opacity: 0.55,
-              }}
-            >
-              Sponsors
-            </div>
-            <h2 style={{ margin: 0, fontWeight: 900, fontSize: "clamp(32px,4vw,48px)", letterSpacing: "-0.5px" }}>
-              Supported By
-            </h2>
-          </div>
+      <section
+        id="sponsors"
+        className="scroll-mt-20 bg-surface px-gutter pt-10 pb-24"
+      >
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Sponsors"
+            title="Sponsors and Partners"
+            centered
+          />
           <SponsorGrid sponsors={SPONSORS} />
         </div>
       </section>
 
       {/* TEAM */}
-      <section id="team" style={{ scrollMarginTop: 80, padding: "120px clamp(20px,5vw,64px)", background: COLORS.BG_PAGE }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div
-              style={{
-                color: COLORS.TEXT_HEADING,
-                fontWeight: 700,
-                fontSize: 13,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                marginBottom: 16,
-                opacity: 0.55,
-              }}
-            >
-              Team
-            </div>
-            <h2 style={{ margin: 0, fontWeight: 900, fontSize: "clamp(32px,4vw,48px)", letterSpacing: "-0.5px" }}>
-              The Team
-            </h2>
-          </div>
+      <section
+        id="team"
+        className="relative scroll-mt-20 overflow-hidden bg-page px-gutter pt-10 pb-24"
+      >
+        <Image src={TEAM_PHOTO_URL} alt="" fill className="object-cover" />
+        {/* Same dark wash as the blog section, so white text reads over it. */}
+        <div className="absolute inset-0 bg-ink/60" />
+
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Team"
+            title="The Team"
+            centered
+            onPhoto
+            compact
+          />
           <TeamGrid members={TEAM_MEMBERS} />
         </div>
       </section>
 
-      {/* FOOTER / CONTACT */}
-      <footer
-        id="contact"
-        style={{
-          scrollMarginTop: 80,
-          background: COLORS.FOOTER_BG,
-          color: COLORS.WHITE,
-          padding: "80px clamp(20px,5vw,64px) 28px",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1.2fr 1fr 1fr",
-              gap: 48,
-              paddingBottom: 56,
-              borderBottom: `1px solid ${COLORS.FOOTER_BORDER}`,
-            }}
-          >
-            <div>
-              <div style={{ marginBottom: 14 }}>
-                <Logo />
-              </div>
-              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: COLORS.FOOTER_TEXT_MUTED, maxWidth: 280 }}>
-                {FOOTER_DESCRIPTION}
-              </p>
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  marginTop: 18,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.25)",
-                  color: COLORS.FOOTER_TEXT,
-                  textDecoration: "none",
-                  fontSize: 11,
-                  fontWeight: 700,
-                }}
-              >
-                IG
-              </a>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 12,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  color: COLORS.FOOTER_TEXT_FAINT,
-                  fontWeight: 700,
-                  marginBottom: 16,
-                }}
-              >
-                Navigate
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {NAV_LINKS.filter((l) => l.href !== "#contact").map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    style={{ color: COLORS.FOOTER_TEXT, textDecoration: "none", fontSize: 14 }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 12,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  color: COLORS.FOOTER_TEXT_FAINT,
-                  fontWeight: 700,
-                  marginBottom: 16,
-                }}
-              >
-                Contact
-              </div>
-              <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: COLORS.FOOTER_TEXT, textDecoration: "none", fontSize: 14 }}>
-                {CONTACT_EMAIL}
-              </a>
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: 12,
-              paddingTop: 24,
-            }}
-          >
-            <div style={{ fontSize: 13, color: COLORS.FOOTER_TEXT_FAINT }}>{COPYRIGHT_TEXT}</div>
-            <div style={{ display: "flex", gap: 24 }}>
-              {LEGAL_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  style={{ color: COLORS.FOOTER_TEXT_FAINT, textDecoration: "none", fontSize: 13 }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

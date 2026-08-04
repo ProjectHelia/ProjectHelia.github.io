@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SITE_NAME } from "./theme";
+import { HERO_DESCRIPTION, SITE_NAME } from "./content";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: SITE_NAME,
-  description: "A student-engineered rocket, built from propulsion to recovery.",
+  description: HERO_DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col font-sans">{children}</body>
     </html>
   );
 }

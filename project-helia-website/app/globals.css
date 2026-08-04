@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   DESIGN TOKENS — change a value here, it updates site-wide.
+   Every --color-X automatically becomes bg-X / text-X / border-X.
+   For a faded version use a slash: text-white/65, bg-accent/15.
+   ============================================================ */
+@theme {
+  /* Brand */
+  --color-accent: #2fc7fa; /* cyan highlight */
+  --color-gold: #f2c230; /* "Learn More" style buttons */
+
+  /* Text */
+  --color-ink: #12153a; /* headings, and the dark footer background */
+  --color-heading: #1b2560; /* small uppercase section labels */
+  --color-body: #4a4e70; /* paragraphs */
+  --color-faint: #9296b5; /* captions and placeholder text */
+
+  /* Surfaces */
+  --color-page: #f7f8fc; /* default page background */
+  --color-surface: #eef0f8; /* alternating section background */
+  --color-line: #e7e9f2; /* light borders */
+  --color-nav: #0f143c; /* nav bar, used translucent as bg-nav/65 */
+
+  /* Hero gradient stops, top to bottom */
+  --color-night-1: #080b24;
+  --color-night-2: #121a4a;
+  --color-night-3: #1b2560;
+  --color-night-4: #0e1638;
+
+  /* Side padding shared by every section, as px-gutter */
+  --spacing-gutter: clamp(20px, 5vw, 64px);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================================
+   DECORATIVE BACKGROUNDS
+   Long gradient definitions live here so the JSX stays readable.
+   ============================================================ */
+
+/* Hero night sky, top to bottom */
+@utility hero-sky {
+  background: linear-gradient(
+    180deg,
+    var(--color-night-1) 0%,
+    var(--color-night-2) 40%,
+    var(--color-night-3) 68%,
+    var(--color-night-4) 100%
+  );
+}
+
+/* Diagonal hatch standing in for photos we don't have yet */
+@utility stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    #dce0f0,
+    #dce0f0 5px,
+    #eef0f8 5px,
+    #eef0f8 10px
+  );
+}
+
+/* Cyan glow on hover, for the nav links and the nav logo */
+@utility halo {
+  transition:
+    background-color 200ms,
+    box-shadow 200ms;
+
+  &:hover {
+    box-shadow: 0 0 18px
+      color-mix(in srgb, var(--color-accent) 55%, transparent);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   JUICER FEED OVERRIDES
+   The widget injects its own markup, so it has to be reined in
+   from out here. Posts keep their own proportions — this scales
+   the whole embed instead.
+   ============================================================ */
+
+/* THE size knob: 1 = Juicer's own size, lower = smaller.
+   `zoom` shrinks the rendered embed while letting it lay itself
+   out at full width, so cards stay in proportion. */
+.juicer-feed {
+  zoom: 0.8;
+}
+
+/* Caption — cut off after 4 lines. The carousel sizes every card to the
+   tallest one, so one rambling post would leave gaps under all the rest. */
+.juicer-feed .jcr-post-message {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }

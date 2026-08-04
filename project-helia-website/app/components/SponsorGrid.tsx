@@ -1,43 +1,35 @@
-import { COLORS, Sponsor } from "../theme";
+import Image from "next/image";
+import { Sponsor } from "../content";
 
 export default function SponsorGrid({ sponsors }: { sponsors: Sponsor[] }) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))",
-        gap: 20,
-      }}
-    >
-      {sponsors.map((sponsor, i) => (
-        <div
-          key={`${sponsor.name}-${i}`}
-          style={{
-            aspectRatio: "2/1",
-            border: `1px solid ${COLORS.BORDER_LIGHT}`,
-            borderRadius: 12,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: COLORS.TEXT_FAINT,
-            fontFamily: "monospace",
-            fontSize: 12,
-            background: COLORS.WHITE,
-            boxShadow: "0 12px 24px -18px rgba(18,21,58,0.18)",
-          }}
-        >
-          {sponsor.logoUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={sponsor.logoUrl}
-              alt={sponsor.name}
-              style={{ maxWidth: "70%", maxHeight: "70%", objectFit: "contain" }}
-            />
-          ) : (
-            sponsor.name
-          )}
-        </div>
-      ))}
+    <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-10">
+      {sponsors.map((sponsor, index) => {
+        const logo = sponsor.logoUrl ? (
+          <Image
+            src={sponsor.logoUrl}
+            alt={sponsor.name}
+            width={280}
+            height={120}
+            className="h-44 w-auto object-contain"
+          />
+        ) : (
+          <span className="font-mono text-sm text-faint">{sponsor.name}</span>
+        );
+
+        return sponsor.websiteUrl ? (
+          <a
+            key={`${sponsor.name}-${index}`}
+            href={sponsor.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {logo}
+          </a>
+        ) : (
+          <div key={`${sponsor.name}-${index}`}>{logo}</div>
+        );
+      })}
     </div>
   );
 }
