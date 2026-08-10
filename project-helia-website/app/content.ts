@@ -7,13 +7,28 @@ export const SITE_NAME = "Project Helia";
 // any blank padding first, or the artwork renders far smaller than the box.
 export const LOGO_URL = "/HELIA_logo_trimmed.png";
 export const SITE_TAGLINE = "Nottingham Space Society's";
-export const HERO_BACKGROUND = "/36FB0F5E-FD37-439B-9D61-8A920202947D.PNG";
+export const HERO_BACKGROUND = "/axisq6034-e.png";
 export const HERO_DESCRIPTION =
-  "A student-engineered rocket, built from propulsion to recovery. Follow the build as we count down to launch.";
+  "High-altitude Exposure Labratory for Incubation and Analysis. ";
 
 // What the countdown counts down to, as an ISO timestamp.
 export const LAUNCH_DATE = "2026-10-20T12:00:00Z";
 export const LAUNCH_WINDOW_LABEL = "Target launch window: October 20";
+
+// Content for the Mission section. Like the Blog section, setting a background
+// turns the text white over a dark wash; leave it "" for a plain dark section.
+export const MISSION_HEADING = "Our Mission";
+export const MISSION_BACKGROUND_URL = "/Wireframe_Dark.png";
+export const MISSION_PARAGRAPHS: string[] = [
+  // Add a paragraph or two here and they'll appear under the heading.
+];
+
+// Content for the Hardware section. Same rules as Mission.
+export const HARDWARE_HEADING = "The Payload";
+export const HARDWARE_BACKGROUND_URL = "";
+export const HARDWARE_PARAGRAPHS: string[] = [
+  // Add a paragraph or two here and they'll appear under the heading.
+];
 
 // The banner between the hero and About, for a partner programme (e.g. REXUS/BEXUS).
 // Drop your files in /public and update the two paths below.
@@ -47,10 +62,12 @@ export const COPYRIGHT_TEXT = `© 2026 ${SITE_NAME}. All rights reserved.`;
 // Drives the top nav, the scroll highlighting, and the footer's Navigate column.
 export const NAV_LINKS = [
   { href: "#home", label: "Home" },
+  { href: "#mission", label: "Mission" },
+  { href: "#hardware", label: "Hardware" },
   { href: "#about", label: "About" },
+  { href: "#team", label: "Team" },
   { href: "#blog", label: "Blog" },
   { href: "#sponsors", label: "Sponsors" },
-  { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -67,6 +84,8 @@ export type TeamMember = {
   role: string;
   /** Optional headshot in /public. Falls back to a striped circle. */
   photoUrl?: string;
+  /** Optional LinkedIn profile. The headshot isn't clickable without it. */
+  linkedinUrl?: string;
 };
 
 // Placeholder roster — swap in real names and roles when ready.

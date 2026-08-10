@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import CountdownTimer from "./components/CountdownTimer";
@@ -28,7 +29,81 @@ import {
   SITE_TAGLINE,
   SPONSORS,
   TEAM_MEMBERS,
+  MISSION_BACKGROUND_URL,
+  MISSION_HEADING,
+  MISSION_PARAGRAPHS,
+  HARDWARE_BACKGROUND_URL,
+  HARDWARE_HEADING,
+  HARDWARE_PARAGRAPHS,
 } from "./content";
+
+// A standard section: eyebrow, title, optional paragraphs, and an optional
+// photo backdrop. With a photo the text turns white over a dark wash; without
+// one the section keeps its own background and dark text. `children` goes
+// below the copy, which is how the blog section adds its feed.
+function PhotoSection({
+  id,
+  eyebrow,
+  title,
+  backgroundUrl,
+  paragraphs,
+  className = "",
+  children,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  backgroundUrl: string;
+  paragraphs: string[];
+  className?: string;
+  children?: ReactNode;
+}) {
+  const onPhoto = Boolean(backgroundUrl);
+
+  return (
+    <section
+      id={id}
+      className={`relative scroll-mt-20 overflow-hidden px-gutter pt-10 pb-24 ${className}`}
+    >
+      {onPhoto && (
+        <>
+          <Image src={backgroundUrl} alt="" fill className="object-cover" />
+          {/* Lower this number to show more of the photo, raise it for more
+              contrast behind the text. */}
+          <div className="absolute inset-0 bg-ink/60" />
+        </>
+      )}
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Body copy is capped near 70 characters per line — past that, long
+            lines get noticeably harder to track back to the next one. */}
+        <div className="mx-auto max-w-[680px] text-center">
+          <SectionHeading
+            eyebrow={eyebrow}
+            title={title}
+            centered
+            compact
+            onPhoto={onPhoto}
+          />
+          <div className="space-y-[18px]">
+            {paragraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className={`text-[17px] leading-[1.75] ${
+                  onPhoto ? "text-white/80" : "text-body"
+                }`}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {children}
+      </div>
+    </section>
+  );
+}
 
 // Every section is `scroll-mt-20` so the fixed nav doesn't cover its heading
 // when you jump to it from the nav.
@@ -83,6 +158,26 @@ export default function Home() {
           </p>
         </div>
       </section>
+      {/* MISSION */}
+      <PhotoSection
+        id="mission"
+        eyebrow="Mission"
+        title={MISSION_HEADING}
+        backgroundUrl={MISSION_BACKGROUND_URL}
+        paragraphs={MISSION_PARAGRAPHS}
+        // min-height keeps the backdrop readable while the copy is still short.
+        className="min-h-[60vh] bg-ink"
+      />
+
+      {/* HARDWARE */}
+      <PhotoSection
+        id="hardware"
+        eyebrow="Hardware"
+        title={HARDWARE_HEADING}
+        backgroundUrl={HARDWARE_BACKGROUND_URL}
+        paragraphs={HARDWARE_PARAGRAPHS}
+        className="bg-surface"
+      />
 
       {/* ABOUT — the partner programme banner, and what the "About" nav
           link points at. Drop your files at public/program-logo.png and
@@ -120,106 +215,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BLOG — the Building Helia write-up plus the social feed. */}
-      <section
-        id="blog"
-        className="relative scroll-mt-20 overflow-hidden bg-white px-gutter pt-10 pb-24"
-      >
-        {onPhoto && (
-          <>
-            <Image
-              src={BLOG_BACKGROUND_URL}
-              alt=""
-              fill
-              className="object-cover"
-            />
-            {/* Same dark wash as the other photo sections. Lower the number
-                to show more of the photo, raise it for more contrast. */}
-            <div className="absolute inset-0 bg-ink/60" />
-          </>
-        )}
-
-        <div className="relative z-10 mx-auto max-w-7xl">
-          {/* Body copy is capped near 70 characters per line — past that,
-              long lines get noticeably harder to track back to the next one. */}
-          <div className="mx-auto max-w-[680px] text-center">
-            <SectionHeading
-              eyebrow="Blog"
-              title={BLOG_HEADING}
-              centered
-              compact
-              onPhoto={onPhoto}
-            />
-            <div className="space-y-[18px]">
-              {BLOG_PARAGRAPHS.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className={`text-[17px] leading-[1.75] ${
-                    onPhoto ? "text-white/80" : "text-body"
-                  }`}
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-
-          {/* Feed gets the full container width, so each card is wide enough
-              that captions wrap sensibly instead of one word per line. */}
-          <div className="mt-8 min-w-0">
-            <div
-              className={`mb-5 flex justify-end border-t pt-5 ${
-                onPhoto ? "border-white/20" : "border-line"
-              }`}
-            >
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`text-sm font-semibold ${
-                  onPhoto
-                    ? "text-white/80 hover:text-white"
-                    : "text-body hover:text-ink"
-                }`}
-              >
-                Follow @{INSTAGRAM_HANDLE} →
-              </a>
-            </div>
-
-            {/* min-w-0 + overflow-hidden are load-bearing: the feed renders a
-                horizontal carousel, and grid/flex children default to
-                min-width:auto, which lets that carousel's intrinsic width blow
-                its container out to millions of pixels wide. */}
-            <div className="min-w-0 overflow-hidden">
-              <div
-                className="juicer-feed"
-                data-feed-id="projecthelia-20140f1f-fc8f-438b-87e2-e0d8f12c5122"
-                data-per="6"
-              />
-              <Script
-                src="https://www.juicer.io/embed/projecthelia-20140f1f-fc8f-438b-87e2-e0d8f12c5122/embed-code.js"
-                strategy="afterInteractive"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SPONSORS */}
-      <section
-        id="sponsors"
-        className="scroll-mt-20 bg-surface px-gutter pt-10 pb-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Sponsors"
-            title="Sponsors and Partners"
-            centered
-          />
-          <SponsorGrid sponsors={SPONSORS} />
-        </div>
-      </section>
-
       {/* TEAM */}
       <section
         id="team"
@@ -245,6 +240,70 @@ export default function Home() {
             compact
           />
           <TeamGrid members={TEAM_MEMBERS} />
+        </div>
+      </section>
+
+      {/* BLOG — the Building Helia write-up plus the social feed. */}
+      <PhotoSection
+        id="blog"
+        eyebrow="Blog"
+        title={BLOG_HEADING}
+        backgroundUrl={BLOG_BACKGROUND_URL}
+        paragraphs={BLOG_PARAGRAPHS}
+        className="bg-white"
+      >
+        {/* Feed gets the full container width, so each card is wide enough
+            that captions wrap sensibly instead of one word per line. */}
+        <div className="mt-8 min-w-0">
+          <div
+            className={`mb-5 flex justify-end border-t pt-5 ${
+              onPhoto ? "border-white/20" : "border-line"
+            }`}
+          >
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-sm font-semibold ${
+                onPhoto
+                  ? "text-white/80 hover:text-white"
+                  : "text-body hover:text-ink"
+              }`}
+            >
+              Follow @{INSTAGRAM_HANDLE} →
+            </a>
+          </div>
+
+          {/* min-w-0 + overflow-hidden are load-bearing: the feed renders a
+              horizontal carousel, and grid/flex children default to
+              min-width:auto, which lets that carousel's intrinsic width blow
+              its container out to millions of pixels wide. */}
+          <div className="min-w-0 overflow-hidden">
+            <div
+              className="juicer-feed"
+              data-feed-id="projecthelia-20140f1f-fc8f-438b-87e2-e0d8f12c5122"
+              data-per="6"
+            />
+            <Script
+              src="https://www.juicer.io/embed/projecthelia-20140f1f-fc8f-438b-87e2-e0d8f12c5122/embed-code.js"
+              strategy="afterInteractive"
+            />
+          </div>
+        </div>
+      </PhotoSection>
+
+      {/* SPONSORS */}
+      <section
+        id="sponsors"
+        className="scroll-mt-20 bg-surface px-gutter pt-10 pb-24"
+      >
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Sponsors"
+            title="Sponsors and Partners"
+            centered
+          />
+          <SponsorGrid sponsors={SPONSORS} />
         </div>
       </section>
 
