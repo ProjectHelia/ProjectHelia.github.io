@@ -35,6 +35,8 @@ import {
   HARDWARE_BACKGROUND_URL,
   HARDWARE_HEADING,
   HARDWARE_PARAGRAPHS,
+  HARDWARE_LINK_LABEL,
+  HARDWARE_LINK_URL,
 } from "./content";
 
 // A standard section: eyebrow, title, optional paragraphs, and an optional
@@ -122,7 +124,15 @@ export default function Home() {
         id="home"
         className="hero-sky relative flex min-h-screen scroll-mt-20 items-center justify-center overflow-hidden px-gutter pt-35 pb-25"
       >
-        <Image src={HERO_BACKGROUND} alt="" fill className="object-cover" />
+        {/* priority: this is the biggest thing above the fold, so Next loads
+            it straight away instead of lazily. Clears the LCP warning. */}
+        <Image
+          src={HERO_BACKGROUND}
+          alt=""
+          fill
+          priority
+          className="object-cover"
+        />
         {/* Same dark wash as the other photo sections. Lower the number
                 to show more of the photo, raise it for more contrast. */}
         <div className="absolute inset-0 bg-ink/20" />
@@ -169,19 +179,28 @@ export default function Home() {
         className="min-h-[60vh] bg-ink"
       />
 
-      {/* HARDWARE */}
+      {/* HARDWARE — same layout as Mission, plus a button under the copy. */}
       <PhotoSection
         id="hardware"
         eyebrow="Hardware"
         title={HARDWARE_HEADING}
         backgroundUrl={HARDWARE_BACKGROUND_URL}
         paragraphs={HARDWARE_PARAGRAPHS}
-        className="bg-surface"
-      />
+        className="min-h-[60vh] bg-ink"
+      >
+        <div className="mt-10 text-center">
+          <a
+            href={HARDWARE_LINK_URL}
+            target={HARDWARE_LINK_URL.startsWith("http") ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className="inline-block rounded-lg bg-accent px-8 py-3 font-bold text-ink shadow-lg shadow-black/40 transition-transform hover:scale-105"
+          >
+            {HARDWARE_LINK_LABEL}
+          </a>
+        </div>
+      </PhotoSection>
 
-      {/* ABOUT — the partner programme banner, and what the "About" nav
-          link points at. Drop your files at public/program-logo.png and
-          public/program-background.jpg, then set PROGRAM_LINK_URL. */}
+      {/* ABOUT — the REXUS/BEXUS partner programme banner. */}
       <section
         id="about"
         className="relative scroll-mt-20 overflow-hidden px-gutter py-24"

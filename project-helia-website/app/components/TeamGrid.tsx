@@ -15,8 +15,10 @@ export default function TeamGrid({ members }: { members: TeamMember[] }) {
             aria-label={
               member.linkedinUrl ? `${member.name} on LinkedIn` : undefined
             }
+            // `group` only when there's a link, so unlinked photos don't
+            // light up on hover as if they were clickable.
             className={`mx-auto mb-4 block w-32 ${
-              member.linkedinUrl ? "halo-shape" : ""
+              member.linkedinUrl ? "group" : ""
             }`}
           >
             {member.photoUrl ? (
@@ -25,10 +27,10 @@ export default function TeamGrid({ members }: { members: TeamMember[] }) {
                 alt={member.name}
                 width={128}
                 height={128}
-                className="size-32 rounded-full object-cover ring-2 ring-white/25"
+                className="size-32 rounded-full object-cover ring-2 ring-white/25 transition-shadow duration-250 ease-out group-hover:ring-accent"
               />
             ) : (
-              <div className="stripes size-32 rounded-full ring-2 ring-white/25" />
+              <div className="stripes size-32 rounded-full ring-2 ring-white/25 transition-shadow duration-250 ease-out group-hover:ring-accent" />
             )}
           </a>
           <p className="text-[15px] font-bold text-white">{member.name}</p>

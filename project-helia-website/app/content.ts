@@ -25,7 +25,9 @@ export const MISSION_PARAGRAPHS: string[] = [
 
 // Content for the Hardware section. Same rules as Mission.
 export const HARDWARE_HEADING = "The Payload";
-export const HARDWARE_BACKGROUND_URL = "";
+export const HARDWARE_BACKGROUND_URL = "/Wireframe_Dark.png";
+export const HARDWARE_LINK_URL = "/";
+export const HARDWARE_LINK_LABEL = "Learn More";
 export const HARDWARE_PARAGRAPHS: string[] = [
   // Add a paragraph or two here and they'll appear under the heading.
 ];
@@ -88,41 +90,87 @@ export type TeamMember = {
   linkedinUrl?: string;
 };
 
-// Placeholder roster — swap in real names and roles when ready.
+// Headshots live in /public/team-photos, cropped square at 512px. To add one,
+// drop the file there and point photoUrl at it. Leave photoUrl off entirely
+// and the member gets a striped placeholder circle instead.
 export const TEAM_MEMBERS: TeamMember[] = [
-  { name: "Harry Kaye", role: "Project Manager", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Harry Kaye",
+    role: "Project Manager",
+    photoUrl: "/IMG_5044.JPG",
+    linkedinUrl: "https://www.linkedin.com/in/harrykaye/",
+  },
   {
     name: "Harshvardhan Rana",
     role: "Systems Engineer",
-    photoUrl: "/IMG_5044.JPG",
+    photoUrl: "/team-photos/harshvardhan-rana.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/harshvardhan-rana/",
   },
-  { name: "Harry Szpuk", role: "Software Lead", photoUrl: "/IMG_5044.JPG" },
-  { name: "Kyane Perera", role: "Electrical Lead", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Harry Szpuk",
+    role: "Software Lead",
+    photoUrl: "/team-photos/harry-remy-szpuk.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/harryszpuk/",
+  },
+  {
+    name: "Kyane Perera",
+    role: "Electrical Lead",
+    photoUrl: "/team-photos/kyane-perera.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/kyane-perera-524b2b21a/",
+  },
   {
     name: "Ryuichi Nakamura",
     role: "Mechanical Lead",
-    photoUrl: "/IMG_5044.JPG",
+    photoUrl: "/team-photos/ryuichi-nakamura.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/ryuichi-nakamura-4796b7295/",
   },
-  { name: "Sally Robinson", role: "Science Lead", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Sally Robinson",
+    role: "Science Lead",
+    photoUrl: "/team-photos/sally-robinson.jpg",
+    // TODO: this is Ryuichi's profile, not Sally's.
+    linkedinUrl: "https://www.linkedin.com/in/ryuichi-nakamura-4796b7295/",
+  },
   {
     name: "Konstantinos Konstantinidis",
     role: "Fluidics Lead",
-    photoUrl: "/IMG_5044.JPG",
+    photoUrl: "/team-photos/konstantinos-konstantinidis.jpg",
+    linkedinUrl:
+      "https://www.linkedin.com/in/konstantinos-konstantinidis-23511938b/",
   },
-  { name: "Rujul Wankhede", role: "Thermal Lead", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Rujul Wankhede",
+    role: "Thermal Lead",
+    photoUrl: "/team-photos/rujul-wankhede.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/rujul-wankhede/",
+  },
   {
     name: "Sayyed Farbod Rassouli",
     role: "Mission analyst",
-    photoUrl: "/IMG_5044.JPG",
+    photoUrl: "/team-photos/farbod-rassouli.jpg",
   },
-  { name: "Jeevan Natt", role: "Shutter system", photoUrl: "/IMG_5044.JPG" },
-  { name: "Aarav Shah", role: "Thermal Design", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Jeevan Natt",
+    role: "Shutter system",
+    photoUrl: "/team-photos/jeevan-natt.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/jeevan-natt/",
+  },
+  {
+    name: "Aarav Shah",
+    role: "Thermal Design",
+    photoUrl: "/team-photos/aarav-shah.jpg",
+  },
   {
     name: "Chrysler Viegas",
     role: "Electrical Team",
-    photoUrl: "/IMG_5044.JPG",
+    // TODO: no photo shot yet, and this LinkedIn is Aarav Shah's.
+    linkedinUrl: "https://www.linkedin.com/in/aarav-shah-5629472a4/",
   },
-  { name: "Tsz Ryan Au", role: "Mechanical Team", photoUrl: "/IMG_5044.JPG" },
+  {
+    name: "Tsz Ryan Au",
+    role: "Mechanical Team",
+    // TODO: no photo shot yet.
+  },
 ];
 
 export type Sponsor = {
@@ -137,14 +185,33 @@ export type Sponsor = {
 // leave it out and the box just shows the name as text.
 export const SPONSORS: Sponsor[] = [
   {
-    name: "Nottingham Biodiscovery Institute",
-    logoUrl: "/1784538772632.png",
-    websiteUrl:
-      "https://www.nottingham.ac.uk/research/research-areas/biodiscovery-institute/biodiscovery-institute.aspx",
+    name: "University of Nottingham",
+    logoUrl: "/Sponsors/BrandEvolution-NottinghamBlue.png",
+    websiteUrl: "https://www.nottingham.ac.uk",
   },
   {
     name: "Hamamatsu Photonics",
-    logoUrl: "/Hamamatsu.png",
+    logoUrl: "/Sponsors/Hamamatsu.png",
     websiteUrl: "https://www.hamamatsu.com/jp/en.html",
+  },
+  {
+    name: "Ansys",
+    logoUrl: "/Sponsors/ANSYS_logo.png",
+    websiteUrl: "https://www.ansys.com",
+  },
+  {
+    name: "CPI Pneumatics",
+    logoUrl: "/Sponsors/b15e27_27b70db21d8441ad83d351a1246aab28~mv2.png",
+    websiteUrl: "https://www.cpi-pneumatics.co.uk",
+  },
+  {
+    name: "IMechE",
+    logoUrl: "/Sponsors/imeche-logo.png",
+    websiteUrl: "www.imeche.org",
+  },
+  {
+    name: "Onshape",
+    logoUrl: "/Sponsors/Onshape_logo_full.png",
+    websiteUrl: "https://www.onshape.com/en/",
   },
 ];

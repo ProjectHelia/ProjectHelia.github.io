@@ -64,9 +64,16 @@
 }
 
 /* Cyan glow on hover that traces the artwork's own outline rather than its
-   bounding box — for logos and icons, where a rectangle would look wrong. */
+   bounding box — for logos, icons and headshots, where a rectangle of light
+   would look wrong.
+
+   The resting state is the same glow at zero opacity rather than no filter at
+   all. Browsers can't interpolate `none` into a filter function, so animating
+   from it makes the glow pop in; matching the shape and fading only the colour
+   gives a real fade. Same reason `halo` below declares a transparent shadow. */
 @utility halo-shape {
-  transition: filter 200ms;
+  filter: drop-shadow(0 0 7px transparent);
+  transition: filter 250ms ease-out;
 
   &:hover {
     filter: drop-shadow(
@@ -77,9 +84,10 @@
 
 /* Cyan glow on hover, for the nav links */
 @utility halo {
+  box-shadow: 0 0 18px transparent;
   transition:
-    background-color 200ms,
-    box-shadow 200ms;
+    background-color 250ms ease-out,
+    box-shadow 250ms ease-out;
 
   &:hover {
     box-shadow: 0 0 18px
