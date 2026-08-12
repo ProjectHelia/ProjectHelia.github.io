@@ -22,12 +22,6 @@
   --color-line: #e7e9f2; /* light borders */
   --color-nav: #0f143c; /* nav bar, used translucent as bg-nav/65 */
 
-  /* Hero gradient stops, top to bottom */
-  --color-night-1: #080b24;
-  --color-night-2: #121a4a;
-  --color-night-3: #1b2560;
-  --color-night-4: #0e1638;
-
   /* Side padding shared by every section, as px-gutter */
   --spacing-gutter: clamp(20px, 5vw, 64px);
 }
@@ -41,18 +35,7 @@
    Long gradient definitions live here so the JSX stays readable.
    ============================================================ */
 
-/* Hero night sky, top to bottom */
-@utility hero-sky {
-  background: linear-gradient(
-    180deg,
-    var(--color-night-1) 0%,
-    var(--color-night-2) 40%,
-    var(--color-night-3) 68%,
-    var(--color-night-4) 100%
-  );
-}
-
-/* Diagonal hatch standing in for photos we don't have yet */
+/* Diagonal hatch standing in for headshots we don't have yet */
 @utility stripes {
   background: repeating-linear-gradient(
     45deg,

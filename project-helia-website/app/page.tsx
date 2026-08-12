@@ -122,7 +122,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="home"
-        className="hero-sky relative flex min-h-screen scroll-mt-20 items-center justify-center overflow-hidden px-gutter pt-35 pb-25"
+        className="relative flex min-h-screen scroll-mt-20 items-center justify-center overflow-hidden bg-ink px-gutter pt-35 pb-25"
       >
         {/* priority: this is the biggest thing above the fold, so Next loads
             it straight away instead of lazily. Clears the LCP warning. */}
