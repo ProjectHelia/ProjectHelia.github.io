@@ -25,13 +25,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: project-helia-website/package-lock.json
+
+      - name: Install dependencies
+        working-directory: project-helia-website
+        run: npm ci
+
+      # next.config.ts sets output: "export", so this writes plain static
+      # HTML/CSS/JS to project-helia-website/out — GitHub Pages has no Node
+      # server behind it, so there's nothing that could run the Next.js app
+      # any other way.
+      - name: Build
+        working-directory: project-helia-website
+        run: npm run build
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: project-helia-website/out
 
       - name: Deploy to GitHub Pages
         id: deployment
