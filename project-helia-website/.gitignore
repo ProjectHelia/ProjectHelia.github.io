@@ -39,7 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Full-resolution source photos — the resized copies in public/team-photos
-# are what the site uses. Keeps ~80MB of originals out of the repo.
-/public/Team-Profiles

@@ -18,7 +18,8 @@ export const LAUNCH_WINDOW_LABEL = "Target launch window: October 20";
 // Content for the Mission section. Like the Blog section, setting a background
 // turns the text white over a dark wash; leave it "" for a plain dark section.
 export const MISSION_HEADING = "Our Mission";
-export const MISSION_BACKGROUND_URL = "/Wireframe_Dark.png";
+export const MISSION_BACKGROUND_URL =
+  "/FLASK_PCB_DEMO_2025-Nov-24_02-32-07AM-000_CustomizedView12403007789_jpg.jpg";
 export const MISSION_PARAGRAPHS: string[] = [
   // Add a paragraph or two here and they'll appear under the heading.
 ];
