@@ -92,7 +92,7 @@ function PhotoSection({
               <p
                 key={paragraph}
                 className={`text-[17px] leading-[1.75] ${
-                  onPhoto ? "text-white/80" : "text-body"
+                  onPhoto ? "text-white/90" : "text-body"
                 }`}
               >
                 {paragraph}
@@ -133,9 +133,12 @@ export default function Home() {
           priority
           className="object-cover"
         />
-        {/* Same dark wash as the other photo sections. Lower the number
-                to show more of the photo, raise it for more contrast. */}
-        <div className="absolute inset-0 bg-ink/20" />
+        {/* Stronger than the other sections' bg-ink/60 — this particular
+            photo is a bright daytime sky, and measuring the actual pixels
+            behind the text showed even solid white failing contrast at the
+            usual wash strength. 75% is the minimum that clears 4.5:1 for
+            every text element here, tagline included. */}
+        <div className="absolute inset-0 bg-ink/75" />
 
         <div className="relative z-10 flex w-full max-w-[800px] flex-col items-center text-center">
           <p className="mb-[22px] text-xs font-semibold uppercase tracking-[3px] text-accent">
@@ -157,13 +160,13 @@ export default function Home() {
             />
           </h1>
 
-          <p className="mb-14 max-w-[480px] text-[clamp(16px,1.6vw,20px)] leading-[1.6] text-white/65">
+          <p className="mb-14 max-w-[480px] text-[clamp(16px,1.6vw,20px)] leading-[1.6] text-white/85">
             {HERO_DESCRIPTION}
           </p>
 
           <CountdownTimer targetDate={LAUNCH_DATE} />
 
-          <p className="mt-5 text-[13px] text-white/40">
+          <p className="mt-5 text-[13px] text-white/70">
             {LAUNCH_WINDOW_LABEL}
           </p>
         </div>
@@ -285,7 +288,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className={`text-sm font-semibold ${
                 onPhoto
-                  ? "text-white/80 hover:text-white"
+                  ? "text-white/90 hover:text-white"
                   : "text-body hover:text-ink"
               }`}
             >

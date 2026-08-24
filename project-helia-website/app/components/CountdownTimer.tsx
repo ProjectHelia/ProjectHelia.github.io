@@ -86,7 +86,7 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
           >
             {twoDigits(unit.value)}
           </div>
-          <div className="mt-2 text-[10.5px] font-semibold tracking-[2px] text-white/45">
+          <div className="mt-2 text-[10.5px] font-semibold tracking-[2px] text-white/70">
             {unit.label}
           </div>
         </div>

@@ -34,7 +34,7 @@ function TeamCard({ member }: { member: TeamMember }) {
         <div className="mx-auto mb-4 block w-32">{photo}</div>
       )}
       <p className="text-[15px] font-bold text-white">{member.name}</p>
-      <p className="mt-0.5 text-[13px] text-white/70">{member.role}</p>
+      <p className="mt-0.5 text-[13px] text-white/80">{member.role}</p>
     </div>
   );
 }

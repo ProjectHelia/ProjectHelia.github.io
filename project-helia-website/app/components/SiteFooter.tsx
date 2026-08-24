@@ -30,7 +30,7 @@ function InstagramIcon() {
 // Small uppercase label above each footer column.
 function ColumnLabel({ children }: { children: string }) {
   return (
-    <p className="mb-4 text-xs font-bold uppercase tracking-[2px] text-white/40">
+    <p className="mb-4 text-xs font-bold uppercase tracking-[2px] text-white/60">
       {children}
     </p>
   );
@@ -91,7 +91,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 pt-6">
-          <p className="text-[13px] text-white/40">{COPYRIGHT_TEXT}</p>
+          <p className="text-[13px] text-white/60">{COPYRIGHT_TEXT}</p>
           <div className="flex gap-6">
             {LEGAL_LINKS.map((link) => (
               <a
@@ -100,7 +100,7 @@ export default function SiteFooter() {
                 // Links off-site open in a new tab; in-page ones don't.
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="text-[13px] text-white/40"
+                className="text-[13px] text-white/60"
               >
                 {link.label}
               </a>
