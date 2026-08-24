@@ -18,8 +18,13 @@ export default function SectionHeading({
     <div
       className={centered ? `${compact ? "mb-4" : "mb-10"} text-center` : ""}
     >
+      {/* opacity-80, not lower: at 13px this doesn't qualify as "large text"
+          under WCAG, so it needs the full 4.5:1 contrast ratio rather than
+          the relaxed one — 80% is the lowest that still clears it against
+          every background this renders on, including a dark-photo section
+          with a light source image underneath the wash. */}
       <p
-        className={`mb-1.5 text-[13px] font-bold uppercase tracking-[3px] opacity-55 ${
+        className={`mb-1.5 text-[13px] font-bold uppercase tracking-[3px] opacity-80 ${
           onPhoto ? "text-white" : "text-heading"
         }`}
       >

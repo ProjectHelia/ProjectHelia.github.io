@@ -26,9 +26,9 @@ export const MISSION_PARAGRAPHS: string[] = [
 
 // Content for the Hardware section. Same rules as Mission.
 export const HARDWARE_HEADING = "The Payload";
-export const HARDWARE_BACKGROUND_URL = "/Wireframe_Dark.png";
+export const HARDWARE_BACKGROUND_URL = "/hardware-bg.jpg";
 export const HARDWARE_LINK_URL = "/";
-export const HARDWARE_LINK_LABEL = "Learn More";
+export const HARDWARE_LINK_LABEL = "Learn more about the payload";
 export const HARDWARE_PARAGRAPHS: string[] = [
   // Add a paragraph or two here and they'll appear under the heading.
 ];
@@ -41,7 +41,11 @@ export const PROGRAM_BACKGROUND_URL = "/IMG_1068.JPEG";
 export const PROGRAM_DESCRIPTION =
   "REXUS/BEXUS is a campaign organized by a bilateral Agency Agreement between the German Aerospace Center (DLR) and the Swedish National Space Agency (SNSA) in cooperation with European Space Agency (ESA). It gives European students the opportunity to carry out scientific experiments on-board sounding rockets and high-altitude balloons.";
 export const PROGRAM_LINK_URL = "https://rexusbexus.net";
-export const PROGRAM_LINK_LABEL = "Learn More";
+// Kept specific rather than a bare "Learn More" — Lighthouse's SEO audit
+// flags generic link text, since a link's accessible name should make sense
+// on its own (screen readers and search crawlers often list links out of
+// context).
+export const PROGRAM_LINK_LABEL = "Learn more about REXUS/BEXUS";
 
 // Optional background photo for the Blog section. Set it and the section's
 // text turns white over a dark wash; leave it "" for plain white with dark text.
@@ -98,7 +102,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Harry Kaye",
     role: "Project Manager",
-    photoUrl: "/IMG_5044.JPG",
+    photoUrl: "/team-photos/harry-kaye.jpg",
     linkedinUrl: "https://www.linkedin.com/in/harrykaye/",
   },
   {
@@ -208,7 +212,7 @@ export const SPONSORS: Sponsor[] = [
   {
     name: "IMechE",
     logoUrl: "/Sponsors/imeche-logo.png",
-    websiteUrl: "www.imeche.org",
+    websiteUrl: "https://www.imeche.org",
   },
   {
     name: "Onshape",
