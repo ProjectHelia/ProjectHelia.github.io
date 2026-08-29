@@ -43,7 +43,11 @@ export default function SiteFooter() {
       className="scroll-mt-20 bg-ink px-gutter pt-20 pb-7 text-white"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-12 border-b border-white/10 pb-14">
+        {/* Single column on mobile — three columns this narrow left the logo's
+            column so tight that the browser's max-width:100% clamped its
+            width while the fixed height stayed put, stretching it out of
+            shape. Full-width columns give it room to size proportionally. */}
+        <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-14 md:grid-cols-[1.2fr_1fr_1fr] md:gap-12">
           <div>
             <div className="mb-3.5">
               <Logo size={56} />

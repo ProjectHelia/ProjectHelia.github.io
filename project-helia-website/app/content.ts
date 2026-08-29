@@ -28,7 +28,7 @@ export const MISSION_PARAGRAPHS: string[] = [
 export const HARDWARE_HEADING = "The Payload";
 export const HARDWARE_BACKGROUND_URL = "/hardware-bg.jpg";
 export const HARDWARE_LINK_URL = "/";
-export const HARDWARE_LINK_LABEL = "Learn more about the payload";
+export const HARDWARE_LINK_LABEL = "Payload";
 export const HARDWARE_PARAGRAPHS: string[] = [
   // Add a paragraph or two here and they'll appear under the heading.
 ];
@@ -45,7 +45,7 @@ export const PROGRAM_LINK_URL = "https://rexusbexus.net";
 // flags generic link text, since a link's accessible name should make sense
 // on its own (screen readers and search crawlers often list links out of
 // context).
-export const PROGRAM_LINK_LABEL = "Learn more about REXUS/BEXUS";
+export const PROGRAM_LINK_LABEL = "REXUS/BEXUS";
 
 // Optional background photo for the Blog section. Set it and the section's
 // text turns white over a dark wash; leave it "" for plain white with dark text.
@@ -133,8 +133,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Sally Robinson",
     role: "Science Lead",
     photoUrl: "/team-photos/sally-robinson.jpg",
-    // TODO: this is Ryuichi's profile, not Sally's.
-    linkedinUrl: "https://www.linkedin.com/in/ryuichi-nakamura-4796b7295/",
   },
   {
     name: "Konstantinos Konstantinidis",
