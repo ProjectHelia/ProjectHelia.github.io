@@ -60,8 +60,16 @@ export default function NavBar() {
     // is. Below md there are 8 links — too many to fit in a row without
     // wrapping onto several lines, so that middle column is hidden and the
     // third column holds a hamburger button instead of standing empty.
+    //
+    // The middle track is pinned to a hard 0px below md rather than left as
+    // `auto` — an empty `display:none` child doesn't reliably collapse an
+    // `auto` track to true zero. It also drops out of grid auto-placement
+    // entirely (a `display:none` element isn't a grid item at all), which
+    // is why the button needs `col-start-3` explicitly below — otherwise it
+    // auto-places into the second slot, since the hidden middle div no
+    // longer occupies the first one.
     <nav className="fixed inset-x-0 top-0 z-100 border-b border-white/8 bg-nav/65 backdrop-blur-lg">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center px-gutter py-3.5">
+      <div className="grid grid-cols-[1fr_0px_1fr] items-center px-gutter py-3.5 md:grid-cols-[1fr_auto_1fr]">
         <a href="#home" className="halo-shape justify-self-start">
           <Logo />
         </a>
@@ -85,7 +93,7 @@ export default function NavBar() {
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="halo-shape justify-self-end text-white md:hidden"
+          className="halo-shape col-start-3 justify-self-end text-white md:hidden"
         >
           <MenuIcon open={menuOpen} />
         </button>
