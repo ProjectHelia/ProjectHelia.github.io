@@ -164,6 +164,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     photoUrl: "/team-photos/aarav-shah.jpg",
   },
   {
+    name: "Elizabeth Pey",
+    // TODO: placeholder — swap in her real role.
+    role: "Team Member",
+    photoUrl: "/team-photos/elizabeth-pey.jpg",
+  },
+  {
     name: "Chrysler Viegas",
     role: "Electrical Team",
     // TODO: no photo shot yet, and this LinkedIn is Aarav Shah's.
