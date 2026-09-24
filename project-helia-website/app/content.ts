@@ -9,11 +9,11 @@ export const LOGO_URL = "/HELIA_logo_trimmed.png";
 export const SITE_TAGLINE = "Nottingham Space Society's";
 export const HERO_BACKGROUND = "/hero-bg.jpg";
 export const HERO_DESCRIPTION =
-  "High-altitude Exposure Labratory for Incubation and Analysis. ";
+  "A student balloon project, built and engineered by the University of Nottingham Space Society.";
 
 // What the countdown counts down to, as an ISO timestamp.
-export const LAUNCH_DATE = "2026-10-20T12:00:00Z";
-export const LAUNCH_WINDOW_LABEL = "Target launch window: October 20";
+export const LAUNCH_DATE = "2026-10-12T12:00:00Z";
+export const LAUNCH_WINDOW_LABEL = "Target launch window: October 12";
 
 // Content for the Mission section. Like the Blog section, setting a background
 // turns the text white over a dark wash; leave it "" for a plain dark section.
