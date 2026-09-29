@@ -21,16 +21,53 @@ export const MISSION_HEADING = "Our Mission";
 export const MISSION_BACKGROUND_URL =
   "/FLASK_PCB_DEMO_2025-Nov-24_02-32-07AM-000_CustomizedView12403007789_jpg.jpg";
 export const MISSION_PARAGRAPHS: string[] = [
-  // Add a paragraph or two here and they'll appear under the heading.
+  "Our mission is to sustain cells at high altitudes in a maintained pressure, temperature and UV exposure.",
+  "To conduct real time analysis on any cell type with fluorescent spectroscopy.",
+  "And eventually, to be able to conduct RNA sequencing by preserving the cells in-situ.",
 ];
 
 // Content for the Hardware section. Same rules as Mission.
 export const HARDWARE_HEADING = "The Payload";
 export const HARDWARE_BACKGROUND_URL = "/hardware-bg.jpg";
-export const HARDWARE_LINK_URL = "/";
+export const HARDWARE_LINK_URL = "/payload";
 export const HARDWARE_LINK_LABEL = "Payload";
 export const HARDWARE_PARAGRAPHS: string[] = [
   // Add a paragraph or two here and they'll appear under the heading.
+];
+
+// The standalone /payload page: one card per subsystem.
+export const PAYLOAD_INTRO = "The payload comprises of multiple systems:";
+export const PAYLOAD_SYSTEMS = [
+  {
+    title: "Biological Payload",
+    description:
+      "The cells themselves. Aiming to be able to host any cell type, we will start off with live GFP (fluorescent tracker) embedded yeast.",
+  },
+  {
+    title: "Thermal System",
+    description:
+      "Maintains each of the flasks containing the yeast at precise temperatures. Also heats up the overall ambient temperature of the system for optimal electronic system performance.",
+  },
+  {
+    title: "Shutter Mechanism",
+    description:
+      "Similar to a camera shutter, we will be controlling the exposure of UV to the cells.",
+  },
+  {
+    title: "Photonics System",
+    description:
+      "Shines a specific wavelength of light onto the cells, which then emit (due to the fluorescent tracker). Emissions are picked up and processed to figure out the activity of the sample in real time.",
+  },
+  {
+    title: "Electrical Power System and On Board Data Handling",
+    description:
+      "The heart and the brains of the system. The EPS provides electricity in the form and amounts needed across the whole system. The OBDH handles all the data and processing, alongside any telemetry to the ground station.",
+  },
+  {
+    title: "Structures",
+    description:
+      "The entire system is encased in aluminium alloys, varying from the rolled cylinder to the CNC milled baseplate and top, and is also coated in different insulations such as Polystyrene EPS and XPS (Expanded PS and eXtruded PS). There's also a layer of Spacetherm A1 on the inside.",
+  },
 ];
 
 // The banner between the hero and About, for a partner programme (e.g. REXUS/BEXUS).
@@ -168,6 +205,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     // TODO: placeholder — swap in her real role.
     role: "Team Member",
     photoUrl: "/team-photos/elizabeth-pey.jpg",
+  },
+  {
+    name: "Ei Hnin Khaing Zin Thant",
+    // TODO: placeholder — swap in her real role.
+    role: "Team Member",
+    photoUrl: "/team-photos/ei-hnin-khaing-zin-thant.jpg",
   },
   {
     name: "Chrysler Viegas",

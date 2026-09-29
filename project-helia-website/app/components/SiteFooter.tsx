@@ -36,7 +36,7 @@ function ColumnLabel({ children }: { children: string }) {
   );
 }
 
-export default function SiteFooter() {
+export default function SiteFooter({ prefix = "" }: { prefix?: string }) {
   return (
     <footer
       id="contact"
@@ -73,7 +73,7 @@ export default function SiteFooter() {
                 (link) => (
                   <a
                     key={link.href}
-                    href={link.href}
+                    href={`${prefix}${link.href}`}
                     className="text-sm text-white/75"
                   >
                     {link.label}

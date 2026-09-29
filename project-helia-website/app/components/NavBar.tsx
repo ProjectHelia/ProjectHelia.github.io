@@ -28,8 +28,12 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-export default function NavBar() {
-  const [activeHref, setActiveHref] = useState(NAV_LINKS[0].href);
+// `prefix` is "/" on pages other than home, so "#mission" becomes "/#mission"
+// and jumps back to the home page's section instead of looking for it here.
+export default function NavBar({ prefix = "" }: { prefix?: string }) {
+  const [activeHref, setActiveHref] = useState(
+    prefix ? "#hardware" : NAV_LINKS[0].href,
+  );
   // Only ever used below the md breakpoint — the button that toggles it is
   // hidden above that, so this can't get stuck open on a resize to desktop.
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,7 +74,7 @@ export default function NavBar() {
     // longer occupies the first one.
     <nav className="fixed inset-x-0 top-0 z-100 border-b border-white/8 bg-nav/65 backdrop-blur-lg">
       <div className="grid grid-cols-[1fr_0px_1fr] items-center px-gutter py-3.5 md:grid-cols-[1fr_auto_1fr]">
-        <a href="#home" className="halo-shape justify-self-start">
+        <a href={`${prefix}#home`} className="halo-shape justify-self-start">
           <Logo />
         </a>
 
@@ -78,7 +82,7 @@ export default function NavBar() {
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={`${prefix}${link.href}`}
               className={`halo rounded-full px-3.5 py-1.5 text-sm font-semibold tracking-[0.3px] text-white/85 hover:bg-white/10 ${
                 link.href === activeHref ? "bg-accent/15" : ""
               }`}
@@ -106,7 +110,7 @@ export default function NavBar() {
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={`${prefix}${link.href}`}
               onClick={() => setMenuOpen(false)}
               className={`rounded-lg px-3.5 py-2.5 text-sm font-semibold tracking-[0.3px] text-white/85 hover:bg-white/10 ${
                 link.href === activeHref ? "bg-accent/15" : ""
