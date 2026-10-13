@@ -216,8 +216,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Chrysler Viegas",
     role: "Electrical Team",
     photoUrl: "/team-photos/chrysler-viegas.jpg",
-    // TODO: this LinkedIn is Aarav Shah's.
-    linkedinUrl: "https://www.linkedin.com/in/aarav-shah-5629472a4/",
   },
   {
     name: "Hashaam Tawfick",
