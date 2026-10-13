@@ -215,8 +215,15 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Chrysler Viegas",
     role: "Electrical Team",
-    // TODO: no photo shot yet, and this LinkedIn is Aarav Shah's.
+    photoUrl: "/team-photos/chrysler-viegas.jpg",
+    // TODO: this LinkedIn is Aarav Shah's.
     linkedinUrl: "https://www.linkedin.com/in/aarav-shah-5629472a4/",
+  },
+  {
+    name: "Hashaam Tawfick",
+    // TODO: placeholder — swap in his real role.
+    role: "Team Member",
+    photoUrl: "/team-photos/hashaam-tawfick.jpg",
   },
   {
     name: "Tsz Ryan Au",
